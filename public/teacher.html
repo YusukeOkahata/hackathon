@@ -29,9 +29,9 @@
     </div>
     
     <body>
-        <header>
+        <!--<header>
             <div class="container">
-                <img class="header-logo" width="150" height="70" src="./img/ISDL_logo.png">
+                <img class="header-logo" width="150" height="70" src="./img/ISDL_logo.png">-->
                 <!--
                 <div class="header-list">
                     <ul>
@@ -42,9 +42,44 @@
                     </ul>
                 </div>
                 -->
+            <!--</div>
+        </header>-->
+        
+        <!--ここからサイドバーのところ-->
+        <div class="header">
+            <div class="container">
+                <img class="header-logo" width="150" height="70" src="./img/ISDL_logo.png">
             </div>
-        </header>
-            
+        </div>
+        <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+          <div class="spinner diagonal part-1"></div>
+          <div class="spinner horizontal"></div>
+          <div class="spinner diagonal part-2"></div>
+        </label>
+        <div id="sidebarMenu">
+          <ul class="sidebarMenuInner">
+            <li>MENU <span>sub menu</span></li>
+            <li><a href="./status.html" target="_blank">返信状況</a></li>
+            <li><a href="" target="_blank">機能A</a></li>
+            <li><a href="" target="_blank">機能B</a></li>
+            <li><a href="" target="_blank">機能C</a></li>
+            <li><a href="" target="_blank">機能D</a></li>
+          </ul>
+        </div>
+        <!--<div id='center' class="main center">
+          <div class="mainInner">
+            <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+          </div>
+          <div class="mainInner">
+            <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+          </div>
+          <div class="mainInner">
+            <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+          </div>
+        </div>-->
+      
+ 
         <div class="top-wrapper">
             <ul id="messages"></ul>
             <form id="form" action="">
