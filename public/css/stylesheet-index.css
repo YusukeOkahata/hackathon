@@ -26,17 +26,11 @@ body{
   z-index: -1;
 }
 
-
-.cut{
-  height: 3px;
-	border-width: 0;
-	background-color: #f3ecec;
-	background-image: -webkit-linear-gradient(right,
-	#ddd6d6 5px,#855454 5px);
-	background-image: linear-gradient(-90deg,
-	#ddd6d6 5px,#855454 5px);
-	background-size: 10px 10px;
+a {
+  text-decoration: none;
+  color:#efefef;
 }
+
 
 .container{
    text-align: center;
@@ -74,153 +68,79 @@ li{
 }
 
 /*サイドバー*/
-@import url('https://fonts.googleapis.com/css?family=Varela+Round');
-html, body {
-    overflow-x: hidden;
-    height: 100%;
-}
-body {
-    background: #fff;
-    padding: 0;
-    margin: 0;
-    font-family: 'Varela Round', sans-serif;
-}
-/*.header {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 100%;
-    box-shadow: none;
-    background-color: #efe8ea;
-    position: fixed;
-    height: 60px!important;
-    overflow: hidden;
-    z-index: 10;
-}*/
-.main {
-    margin: 0 auto;
-    display: block;
-    height: 100%;
-    margin-top: 60px;
-}
-.mainInner{
-    display: table;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-}
-.mainInner div{
-    display:table-cell;
-    vertical-align: middle;
-    font-size: 3em;
-    font-weight: bold;
-    letter-spacing: 1.25px;
+*{
+  transition:0.5s;
 }
 
-#sidebarMenu {
-    height: 100%;
-    position: fixed;
-    left: 0;
-    width: 250px;
-    margin-top: 60px;
-    transform: translateX(-250px);
-    transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #FC466B 0%, #fbb03f 100%);
-}
-.sidebarMenuInner{
-    margin:0;
-    padding:0;
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
-}
-.sidebarMenuInner li{
-    list-style: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 20px;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-}
-.sidebarMenuInner li span{
-    display: block;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.50);
-}
-.sidebarMenuInner li a{
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-}
-input[type="checkbox"]:checked ~ #sidebarMenu {
-    transform: translateX(0);
+body{
+  color:#454545;
 }
 
-input[type=checkbox] {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    display: none;
+nav{
+  width:200px;
+  height:100vh;
+  background-color:#928484;
+  position:fixed;
+  left:0px;
+  z-index: 9;
 }
-.sidebarIconToggle {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    cursor: pointer;
-    position: absolute;
-    z-index: 99;
-    height: 100%;
-    width: 100%;
-    top: 22px;
-    left: 15px;
-    height: 22px;
-    width: 22px;
-    background-color: #333;
+
+nav li{
+  margin-bottom: 8px;
 }
-/*.spinner {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background-color: #171616;
-}*/
-.horizontal {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
+
+.space{
+  width:200px;
+  height:100vh;
+  float:left;
 }
-.diagonal.part-1 {
-    position: relative;
-    transition: all 0.3s;
-    box-sizing: border-box;
-    float: left;
+
+.nav-bar{
+  margin-top:30px;   
+  margin-left: 25px;
+  cursor: pointer;
+  position: fixed;
+  z-index: 10;
+  color:white;
 }
-.diagonal.part-2 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
+
+
+.hidden-space{
+   width: 0px;
+ }
+
+.hidden-nav{
+  left:-200px;
 }
-input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    opacity: 0;
+
+.header-onclick{
+  width:100%;
+  left:0px;
 }
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    transform: rotate(135deg);
-    margin-top: 8px;
+
+.header-scroll{
+  height:50px;
+  background-color:#FCECEA;
 }
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    transform: rotate(-135deg);
-    margin-top: -9px;
+
+.header-scroll-nav{
+   margin-top:17px;
 }
+
+.nav-bar-white{
+  color:#928484;
+}
+
+.Message-form{
+  left:-100px;
+}
+
+.Message-form-onclick{
+  width:100%;
+  left:0px;
+}
+
+
 
 .top-wrapper{
     background-color: rgb(240,240,240);
@@ -235,22 +155,6 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 .top-image{
   width:100%;
   height:100%;
-}
-
-.login{
-
-}
-
-.id{
-
-}
-
-.pass{
-
-}
-
-.sendButton{
-
 }
 
 
@@ -404,9 +308,13 @@ a.btn-svg span {
 
 footer{
   /*background-color: rgb(240,240,240);*/
+
   color:rgb(240, 240, 240);
   max-width: 100%;
   height:130px;
+
+  /*marginの上側を操作してfooterを最下部に設置*/
+  margin-top: 100%;
 }
 
 footer h7{
