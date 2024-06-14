@@ -5,21 +5,39 @@ const server = http.createServer(app);
 const io = require("socket.io")(server);
 const PORT = 3040;
 
-app.use(express.static('public'))
+const mysql = require("mysql2");
 
+// MySQLの接続情報
+const connection = mysql.createConnection({
+  host: "db", // Docker ComposeでMySQLを起動している場合、'localhost'ではなくコンテナ名（ここでは'mysql'）を使用します
+  user: "jolly",
+  password: "chatpass",
+  database: "mydatabase",
+});
 
-app.get("/", (req,res) =>{
-    res.sendFile(__dirname + "/index.html")
-})
+// データベースに接続
+connection.connect((err) => {
+  if (err) {
+    console.error("データベース接続に失敗しました: " + err.stack);
+    return;
+  }
+  console.log("データベースに接続成功 ID: " + connection.threadId);
+});
 
-io.on("connection", (socket) =>{
-    console.log("ユーザーが接続しました");
-    socket.on("chat message", (msg) => {
-        //console.log("massage:" + msg);
-        io.emit("chat message", msg);
-    });
-})
+app.use(express.static("public"));
 
-server.listen(PORT, ()=>{
-    console.log(`listening on ${PORT}`);
-})
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+io.on("connection", (socket) => {
+  console.log("ユーザーが接続しました");
+  socket.on("chat message", (msg) => {
+    //console.log("massage:" + msg);
+    io.emit("chat message", msg);
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`listening on ${PORT}`);
+});
