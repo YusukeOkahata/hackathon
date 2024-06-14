@@ -1,11 +1,11 @@
-body{
-    font-family: 'arial black',serif;
-    max-width: 100%;
-    max-height: 100%;
-    margin:0px;
+body {
+  font-family: "arial black", serif;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0px;
 }
 
-.background{
+.background {
   /*background-image: url('../image/oral-bg2.jpg');*/
   background-attachment: fixed;
 }
@@ -26,235 +26,134 @@ body{
   z-index: -1;
 }
 
-
-.cut{
-  height: 3px;
-	border-width: 0;
-	background-color: #f3ecec;
-	background-image: -webkit-linear-gradient(right,
-	#ddd6d6 5px,#855454 5px);
-	background-image: linear-gradient(-90deg,
-	#ddd6d6 5px,#855454 5px);
-	background-size: 10px 10px;
+a {
+  text-decoration: none;
+  color: #efefef;
 }
 
-.container{
-   text-align: center;
-   padding:20px 0;
-}
-
-.container-bottom{
+.container {
   text-align: center;
-  padding:1px 0;
+  padding: 20px 0;
 }
 
-header{
-    background-color: rgb(255, 255, 255);
-    max-width: 100%;
-    height:90px;
+.container-bottom {
+  text-align: center;
+  padding: 1px 0;
 }
 
-.header-logo{
-    padding:0 40px;
-    margin: 0;
-    /*float:left;*/
+header {
+  background-color: rgb(255, 255, 255);
+  max-width: 100%;
+  height: 90px;
 }
 
-.header-list li{
-    padding:0px 20px;
-    float:left;
+.header-logo {
+  padding: 0 40px;
+  margin: 0;
+  /*float:left;*/
 }
 
-.header-list a{
-    color:black;
+.header-list li {
+  padding: 0px 20px;
+  float: left;
 }
 
-li{
-    list-style: none;
+.header-list a {
+  color: black;
+}
+
+li {
+  list-style: none;
 }
 
 /*サイドバー*/
-@import url('https://fonts.googleapis.com/css?family=Varela+Round');
-html, body {
-    overflow-x: hidden;
-    height: 100%;
+* {
+  transition: 0.5s;
 }
+
 body {
-    background: #fff;
-    padding: 0;
-    margin: 0;
-    font-family: 'Varela Round', sans-serif;
-}
-/*.header {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 100%;
-    box-shadow: none;
-    background-color: #efe8ea;
-    position: fixed;
-    height: 60px!important;
-    overflow: hidden;
-    z-index: 10;
-}*/
-.main {
-    /*margin: 0 auto;*/
-    display: block;
-    /*height: 100%;
-    margin-top: 60px;*/
-}
-.mainInner{
-    display: table;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-}
-.mainInner div{
-    display:table-cell;
-    vertical-align: middle;
-    font-size: 3em;
-    font-weight: bold;
-    letter-spacing: 1.25px;
+  color: #454545;
 }
 
-#sidebarMenu {
-    height: 100%;
-    position: fixed;
-    left: 0;
-    width: 250px;
-    margin-top: 60px;
-    transform: translateX(-250px);
-    transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #FC466B 0%, #fbb03f 100%);
-}
-.sidebarMenuInner{
-    margin:0;
-    padding:0;
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
-}
-.sidebarMenuInner li{
-    list-style: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    padding: 20px;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-}
-.sidebarMenuInner li span{
-    display: block;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.50);
-}
-.sidebarMenuInner li a{
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-}
-input[type="checkbox"]:checked ~ #sidebarMenu {
-    transform: translateX(0);
+nav {
+  width: 200px;
+  height: 100vh;
+  background-color: #928484;
+  position: fixed;
+  left: 0px;
+  z-index: 9;
 }
 
-input[type=checkbox] {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    display: none;
-}
-.sidebarIconToggle {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    cursor: pointer;
-    position: absolute;
-    z-index: 99;
-    height: 100%;
-    width: 100%;
-    top: 22px;
-    left: 15px;
-    height: 22px;
-    width: 22px;
-    background-color: #333;
-}
-/*.spinner {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background-color: #171616;
-}*/
-.horizontal {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
-}
-.diagonal.part-1 {
-    position: relative;
-    transition: all 0.3s;
-    box-sizing: border-box;
-    float: left;
-}
-.diagonal.part-2 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    position: relative;
-    float: left;
-    margin-top: 3px;
-}
-input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    opacity: 0;
-}
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    transform: rotate(135deg);
-    margin-top: 8px;
-}
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    transform: rotate(-135deg);
-    margin-top: -9px;
+nav li {
+  margin-bottom: 8px;
 }
 
-.top-wrapper{
-    background-color: rgb(240,240,240);
-    /*background-image:url(../img/chat_background.png);
+.space {
+  width: 200px;
+  height: 100vh;
+  float: left;
+}
+
+.nav-bar {
+  margin-top: 30px;
+  margin-left: 25px;
+  cursor: pointer;
+  position: fixed;
+  z-index: 10;
+  color: white;
+}
+
+.hidden-space {
+  width: 0px;
+}
+
+.hidden-nav {
+  left: -200px;
+}
+
+.header-onclick {
+  width: 100%;
+  left: 0px;
+}
+
+.header-scroll {
+  height: 50px;
+  background-color: #fcecea;
+}
+
+.header-scroll-nav {
+  margin-top: 17px;
+}
+
+.nav-bar-white {
+  color: #928484;
+}
+
+.Message-form {
+  left: -100px;
+}
+
+.Message-form-onclick {
+  width: 100%;
+  left: 0px;
+}
+
+.top-wrapper {
+  background-color: rgb(240, 240, 240);
+  /*background-image:url(../img/chat_background.png);
     background-size:100% auto;
     background-repeat: no-repeat;
     background-position: center;*/
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.top-image{
-  width:100%;
-  height:100%;
+.top-image {
+  width: 100%;
+  height: 100%;
 }
 
-.login{
-
-}
-
-.id{
-
-}
-
-.pass{
-
-}
-
-.sendButton{
-
-}
-
-
-#form{
+#form {
   background: #181818dc;
   padding: 0.25rem;
   position: fixed;
@@ -298,21 +197,31 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   background: #efefef;
 }
 
-.middle-wrapper{
-    /*background-color: rgb(240, 240, 240);*/
-    font-family: "Hiragino Kaku Gothic ProN";
-    color: rgb(240, 240, 240);
-    text-shadow: var(--outline) 3px 0 0, var(--outline) 2.83487px 0.981584px 0, var(--outline) 2.35766px 1.85511px 0, var(--outline) 1.62091px 2.52441px 0, var(--outline) 0.705713px 2.91581px 0, var(--outline) -0.287171px 2.98622px 0, var(--outline) -1.24844px 2.72789px 0, var(--outline) -2.07227px 2.16926px 0, var(--outline) -2.66798px 1.37182px 0, var(--outline) -2.96998px 0.42336px 0, var(--outline) -2.94502px -0.571704px 0, var(--outline) -2.59586px -1.50383px 0, var(--outline) -1.96093px -2.27041px 0, var(--outline) -1.11013px -2.78704px 0, var(--outline) -0.137119px -2.99686px 0, var(--outline) 0.850987px -2.87677px 0, var(--outline) 1.74541px -2.43999px 0, var(--outline) 2.44769px -1.73459px 0, var(--outline) 2.88051px -0.838247px 0;
-    max-width: 100%;
-    max-height: 100%;
+.middle-wrapper {
+  /*background-color: rgb(240, 240, 240);*/
+  font-family: "Hiragino Kaku Gothic ProN";
+  color: rgb(240, 240, 240);
+  text-shadow: var(--outline) 3px 0 0, var(--outline) 2.83487px 0.981584px 0,
+    var(--outline) 2.35766px 1.85511px 0, var(--outline) 1.62091px 2.52441px 0,
+    var(--outline) 0.705713px 2.91581px 0,
+    var(--outline) -0.287171px 2.98622px 0,
+    var(--outline) -1.24844px 2.72789px 0, var(--outline) -2.07227px 2.16926px 0,
+    var(--outline) -2.66798px 1.37182px 0, var(--outline) -2.96998px 0.42336px 0,
+    var(--outline) -2.94502px -0.571704px 0,
+    var(--outline) -2.59586px -1.50383px 0,
+    var(--outline) -1.96093px -2.27041px 0,
+    var(--outline) -1.11013px -2.78704px 0,
+    var(--outline) -0.137119px -2.99686px 0,
+    var(--outline) 0.850987px -2.87677px 0,
+    var(--outline) 1.74541px -2.43999px 0, var(--outline) 2.44769px -1.73459px 0,
+    var(--outline) 2.88051px -0.838247px 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 :root {
-  --outline : #333;
+  --outline: #333;
 }
-
-
-
 
 /*button*/
 .btn,
@@ -379,37 +288,38 @@ a.btn-svg:hover svg rect {
 a.btn-svg span {
   color: rgb(240, 240, 240);
   font-size: 15px;
-  
 }
 
-.bottom-wrapper{
-  background-color: rgba(240,240,240,0.6);
+.bottom-wrapper {
+  background-color: rgba(240, 240, 240, 0.6);
   /*color:rgb(240, 240, 240);*/
   max-height: 100%;
 }
 
-.videos{
+.videos {
   display: flex;
-  max-height:100%;
+  max-height: 100%;
 }
 
-.live-video{
-  display:flex;
+.live-video {
+  display: flex;
   flex-direction: row;
 }
-.live-video h5{
+.live-video h5 {
   margin-left: 10px;
 }
 
-
-footer{
+footer {
   /*background-color: rgb(240,240,240);*/
-  color:rgb(240, 240, 240);
+
+  color: rgb(240, 240, 240);
   max-width: 100%;
-  height:130px;
+  height: 130px;
+
+  /*marginの上側を操作してfooterを最下部に設置*/
+  margin-top: 100%;
 }
 
-footer h7{
-    font-size: 20px;
+footer h7 {
+  font-size: 20px;
 }
-
