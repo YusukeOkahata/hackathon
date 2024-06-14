@@ -23,7 +23,7 @@
 
 1. リポジトリをクローンします:
    ```bash
-   git clone https://github.com/ユーザー名/リポジトリ名.git
+   git clone https://github.com/YusukeOkahata/hackathon.git
    ```
 2. ディレクトリに移動します:
    ```bash
