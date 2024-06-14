@@ -4,10 +4,10 @@ services:
     container_name: mysql-container
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: jolly1228
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: jolly
-      MYSQL_PASSWORD: chatpass
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: chatapp
+      MYSQL_USER: chat_user
+      MYSQL_PASSWORD: chat_password
     ports:
       - "3307:3306"
     volumes:
