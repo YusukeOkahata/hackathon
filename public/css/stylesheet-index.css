@@ -1,11 +1,11 @@
-body{
-    font-family: 'arial black',serif;
-    max-width: 100%;
-    max-height: 100%;
-    margin:0px;
+body {
+  font-family: "arial black", serif;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0px;
 }
 
-.background{
+.background {
   /*background-image: url('../image/oral-bg2.jpg');*/
   background-attachment: fixed;
 }
@@ -28,138 +28,132 @@ body{
 
 a {
   text-decoration: none;
-  color:#efefef;
+  color: #efefef;
 }
 
-
-.container{
-   text-align: center;
-   padding:20px 0;
-}
-
-.container-bottom{
+.container {
   text-align: center;
-  padding:1px 0;
+  padding: 20px 0;
 }
 
-header{
-    background-color: rgb(255, 255, 255);
-    max-width: 100%;
-    height:90px;
+.container-bottom {
+  text-align: center;
+  padding: 1px 0;
 }
 
-.header-logo{
-    padding:0 40px;
-    margin: 0;
-    /*float:left;*/
+header {
+  background-color: rgb(255, 255, 255);
+  max-width: 100%;
+  height: 90px;
 }
 
-.header-list li{
-    padding:0px 20px;
-    float:left;
+.header-logo {
+  padding: 0 40px;
+  margin: 0;
+  /*float:left;*/
 }
 
-.header-list a{
-    color:black;
+.header-list li {
+  padding: 0px 20px;
+  float: left;
 }
 
-li{
-    list-style: none;
+.header-list a {
+  color: black;
+}
+
+li {
+  list-style: none;
 }
 
 /*サイドバー*/
-*{
-  transition:0.5s;
+* {
+  transition: 0.5s;
 }
 
-
-body{
-  color:#454545;
+body {
+  color: #454545;
 }
 
-nav{
-  width:200px;
-  height:100vh;
-  background-color:#928484;
-  position:fixed;
-  left:0px;
+nav {
+  width: 200px;
+  height: 100vh;
+  background-color: #928484;
+  position: fixed;
+  left: 0px;
   z-index: 9;
 }
 
-nav li{
+nav li {
   margin-bottom: 8px;
 }
 
-.space{
-  width:200px;
-  height:100vh;
-  float:left;
+.space {
+  width: 200px;
+  height: 100vh;
+  float: left;
 }
 
-.nav-bar{
-  margin-top:30px;   
+.nav-bar {
+  margin-top: 30px;
   margin-left: 25px;
   cursor: pointer;
   position: fixed;
   z-index: 10;
-  color:white;
+  color: white;
 }
 
-
-.hidden-space{
-   width: 0px;
- }
-
-.hidden-nav{
-  left:-200px;
+.hidden-space {
+  width: 0px;
 }
 
-.header-onclick{
-  width:100%;
-  left:0px;
+.hidden-nav {
+  left: -200px;
 }
 
-.header-scroll{
-  height:50px;
-  background-color:#FCECEA;
+.header-onclick {
+  width: 100%;
+  left: 0px;
 }
 
-.header-scroll-nav{
-   margin-top:17px;
+.header-scroll {
+  height: 50px;
+  background-color: #fcecea;
 }
 
-.nav-bar-white{
-  color:#928484;
+.header-scroll-nav {
+  margin-top: 17px;
 }
 
-.Message-form{
-  left:-100px;
+.nav-bar-white {
+  color: #928484;
 }
 
-.Message-form-onclick{
-  width:100%;
-  left:0px;
+.Message-form {
+  left: -100px;
 }
 
+.Message-form-onclick {
+  width: 100%;
+  left: 0px;
+}
 
-
-.top-wrapper{
-    background-color: rgb(240,240,240);
-    /*background-image:url(../img/chat_background.png);
+.top-wrapper {
+  background-color: rgb(240, 240, 240);
+  /*background-image:url(../img/chat_background.png);
     background-size:100% auto;
     background-repeat: no-repeat;
     background-position: center;*/
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.top-image{
-  width:100%;
-  height:100%;
+.top-image {
+  width: 100%;
+  height: 100%;
 }
 
-
-#form{
+#form {
   background: #181818dc;
   padding: 0.25rem;
   position: fixed;
@@ -203,21 +197,31 @@ nav li{
   background: #efefef;
 }
 
-.middle-wrapper{
-    /*background-color: rgb(240, 240, 240);*/
-    font-family: "Hiragino Kaku Gothic ProN";
-    color: rgb(240, 240, 240);
-    text-shadow: var(--outline) 3px 0 0, var(--outline) 2.83487px 0.981584px 0, var(--outline) 2.35766px 1.85511px 0, var(--outline) 1.62091px 2.52441px 0, var(--outline) 0.705713px 2.91581px 0, var(--outline) -0.287171px 2.98622px 0, var(--outline) -1.24844px 2.72789px 0, var(--outline) -2.07227px 2.16926px 0, var(--outline) -2.66798px 1.37182px 0, var(--outline) -2.96998px 0.42336px 0, var(--outline) -2.94502px -0.571704px 0, var(--outline) -2.59586px -1.50383px 0, var(--outline) -1.96093px -2.27041px 0, var(--outline) -1.11013px -2.78704px 0, var(--outline) -0.137119px -2.99686px 0, var(--outline) 0.850987px -2.87677px 0, var(--outline) 1.74541px -2.43999px 0, var(--outline) 2.44769px -1.73459px 0, var(--outline) 2.88051px -0.838247px 0;
-    max-width: 100%;
-    max-height: 100%;
+.middle-wrapper {
+  /*background-color: rgb(240, 240, 240);*/
+  font-family: "Hiragino Kaku Gothic ProN";
+  color: rgb(240, 240, 240);
+  text-shadow: var(--outline) 3px 0 0, var(--outline) 2.83487px 0.981584px 0,
+    var(--outline) 2.35766px 1.85511px 0, var(--outline) 1.62091px 2.52441px 0,
+    var(--outline) 0.705713px 2.91581px 0,
+    var(--outline) -0.287171px 2.98622px 0,
+    var(--outline) -1.24844px 2.72789px 0, var(--outline) -2.07227px 2.16926px 0,
+    var(--outline) -2.66798px 1.37182px 0, var(--outline) -2.96998px 0.42336px 0,
+    var(--outline) -2.94502px -0.571704px 0,
+    var(--outline) -2.59586px -1.50383px 0,
+    var(--outline) -1.96093px -2.27041px 0,
+    var(--outline) -1.11013px -2.78704px 0,
+    var(--outline) -0.137119px -2.99686px 0,
+    var(--outline) 0.850987px -2.87677px 0,
+    var(--outline) 1.74541px -2.43999px 0, var(--outline) 2.44769px -1.73459px 0,
+    var(--outline) 2.88051px -0.838247px 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 :root {
-  --outline : #333;
+  --outline: #333;
 }
-
-
-
 
 /*button*/
 .btn,
@@ -284,41 +288,38 @@ a.btn-svg:hover svg rect {
 a.btn-svg span {
   color: rgb(240, 240, 240);
   font-size: 15px;
-  
 }
 
-.bottom-wrapper{
-  background-color: rgba(240,240,240,0.6);
+.bottom-wrapper {
+  background-color: rgba(240, 240, 240, 0.6);
   /*color:rgb(240, 240, 240);*/
   max-height: 100%;
 }
 
-.videos{
+.videos {
   display: flex;
-  max-height:100%;
+  max-height: 100%;
 }
 
-.live-video{
-  display:flex;
+.live-video {
+  display: flex;
   flex-direction: row;
 }
-.live-video h5{
+.live-video h5 {
   margin-left: 10px;
 }
 
-
-footer{
+footer {
   /*background-color: rgb(240,240,240);*/
 
-  color:rgb(240, 240, 240);
+  color: rgb(240, 240, 240);
   max-width: 100%;
-  height:130px;
+  height: 130px;
 
   /*marginの上側を操作してfooterを最下部に設置*/
   margin-top: 100%;
 }
 
-footer h7{
-    font-size: 20px;
+footer h7 {
+  font-size: 20px;
 }
-
