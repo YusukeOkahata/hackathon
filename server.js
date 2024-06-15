@@ -20,18 +20,29 @@ db.connect(err => {
 
 app.use(express.static('public'))
 
-app.get("/", (req,res) =>{
-    res.sendFile(__dirname + "/index.html")
-})
+// データベースに接続
+connection.connect((err) => {
+  if (err) {
+    console.error("データベース接続に失敗しました: " + err.stack);
+    return;
+  }
+  console.log("データベースに接続成功 ID: " + connection.threadId);
+});
 
-io.on("connection", (socket) =>{
-    console.log("ユーザーが接続しました");
-    socket.on("chat message", (msg) => {
-        //console.log("massage:" + msg);
-        io.emit("chat message", msg);
-    });
-})
+app.use(express.static("public"));
 
-server.listen(PORT, ()=>{
-    console.log(`listening on ${PORT}`);
-})
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+io.on("connection", (socket) => {
+  console.log("ユーザーが接続しました");
+  socket.on("chat message", (msg) => {
+    //console.log("massage:" + msg);
+    io.emit("chat message", msg);
+  });
+});
+
+server.listen(PORT, () => {
+  console.log(`listening on ${PORT}`);
+});
