@@ -5,14 +5,15 @@ const server = http.createServer(app);
 const io = require("socket.io")(server);
 const PORT = 3040;
 
-const mysql = require("mysql2");
+const mysql = require("mysql");
 
 // MySQLの接続情報
-const connection = mysql.createConnection({
-  host: "db", // Docker ComposeでMySQLを起動している場合、'localhost'ではなくコンテナ名（ここでは'mysql'）を使用します
-  user: "jolly",
-  password: "chatpass",
-  database: "mydatabase",
+// 環境変数を使用してDBにアクセスする
+var connection = mysql.createConnection({
+  host: "db",
+  user: `${process.env.MYSQL_USER}`,
+  password: `${process.env.MYSQL_PASSWORD}`,
+  database: `${process.env.MYSQL_DATABASE}`,
 });
 
 // データベースに接続
