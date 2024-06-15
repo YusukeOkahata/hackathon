@@ -3,11 +3,12 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const io = require("socket.io")(server);
-const PORT = 3040;
+const PORT = 3060;
 
 const mysql = require("mysql2");
 
 // MySQLの接続情報
+/*
 const connection = mysql.createConnection({
   host: "db", // Docker ComposeでMySQLを起動している場合、'localhost'ではなくコンテナ名（ここでは'mysql'）を使用します
   user: "jolly",
@@ -23,6 +24,7 @@ connection.connect((err) => {
   }
   console.log("データベースに接続成功 ID: " + connection.threadId);
 });
+*/
 
 app.use(express.static("public"));
 
