@@ -70,36 +70,46 @@ app.post('/registration', (req, res) => {
 
 // ログインページのルーティング
 app.get('/index', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public','index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    const sql = 'SELECT * FROM users WHERE username = ?';
-    db.query(sql, [username], (err, result) => {
-        if (err) throw err;
+    if (username === 'Onoteacher' && password === 'ice_number1') {
+        // 特定のユーザー名とパスワードの場合
+        res.redirect('/teacher.html');
+    } else {
+        const sql = 'SELECT * FROM users WHERE username = ?';
+        db.query(sql, [username], (err, result) => {
+            if (err) throw err;
 
-        if (result.length === 0) {
-            res.send('No such user found');
-        } else {
-            bcrypt.compare(password, result[0].password, (err, isMatch) => {
-                if (err) throw err;
+            if (result.length === 0) {
+                res.send('No such user found');
+            } else {
+                bcrypt.compare(password, result[0].password, (err, isMatch) => {
+                    if (err) throw err;
 
-                if (isMatch) {
-                    res.redirect('/students.html');
-                } else {
-                    res.send('Invalid credentials');
-                }
-            });
-        }
-    });
+                    if (isMatch) {
+                        res.redirect('/students.html');
+                    } else {
+                        res.send('Invalid credentials');
+                    }
+                });
+            }
+        });
+    }
+});
+
+// teacher.htmlのルーティング
+app.get('/teacher.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'teacher.html'));
 });
 
 // students.htmlのルーティング
 app.get('/students.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public','students.html'));
+    res.sendFile(path.join(__dirname, 'public', 'students.html'));
 });
 
 const http = require("http");
