@@ -3,7 +3,10 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const io = require("socket.io")(server);
-const PORT = 3040;
+
+// dotenvパッケージを読み込む
+require("dotenv").config();
+const PORT = process.env.PORT;
 
 const mysql = require("mysql");
 
@@ -11,9 +14,9 @@ const mysql = require("mysql");
 // 環境変数を使用してDBにアクセスする
 var connection = mysql.createConnection({
   host: "db",
-  user: `${process.env.MYSQL_USER}`,
-  password: `${process.env.MYSQL_PASSWORD}`,
-  database: `${process.env.MYSQL_DATABASE}`,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 
 // データベースに接続
