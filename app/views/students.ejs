@@ -14,7 +14,7 @@
     <!--script-->
     <script type="text/javascript" src="/javascript/loading.js"></script>
 
-    <title>チャットアプリ</title>
+    <title>生徒用画面</title>
   </head>
 
   <!--loading-->
@@ -43,39 +43,13 @@
     </header>
 
     <div class="top-wrapper">
-      <div class="container">
-        <h2>Please sign in</h2>
-        <form class="login" action="" method="POST">
-          <input class="id" type="text" name="userid" placeholder="Enter ID" />
-          <input
-            class="pass"
-            type="text"
-            name="password"
-            placeholder="Enter PASS"
-          />
-          <button class="sendButton" type="submit">送信</button>
-        </form>
-
-        <div class="trans_registration">
-          <a class="trans_registration" href="registration"
-            >登録済みでない方はこちら</a
-          >
-          <a class="trans_registration" href="students">生徒</a>
-          <a class="trans_registration" href="teacher">先生</a>
-        </div>
-      </div>
+      <ul id="messages"></ul>
+      <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+      </form>
     </div>
-
     <div class="middle-wrapper"></div>
-
     <div class="bottom-wrapper"></div>
-
-    <!--
-        <ul id="messages"></ul>
-        <form id="form" action="">
-            <input id="input" autocomplete="off" /><button>Send</button>
-        </form>
-        -->
 
     <footer>
       <div class="container">
@@ -85,7 +59,6 @@
       </div>
     </footer>
 
-    <!--
     <script src="/socket.io/socket.io.js"></script>
     <script>
       let socket = io();
@@ -93,6 +66,7 @@
       const form = document.getElementById("form");
       const input = document.getElementById("input");
       const messages = document.getElementById("messages");
+      //console.log(form);
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -109,6 +83,5 @@
         window.scrollTo(0, document.body.scrollHeight);
       });
     </script>
-    -->
   </body>
 </html>
