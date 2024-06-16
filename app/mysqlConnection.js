@@ -10,12 +10,12 @@ const pool = mysql.createPool({
 
 //接続確認
 pool.getConnection((err, connection) => {
+  console.log("Connected to the database・・・");
   if (err) {
     console.error("Error connecting to the database:", err.message);
     return;
   }
 
-  console.log("Connected to the database・・・");
   console.log("データベース接続に成功しました!!!");
   connection.release(); // 接続をリリース
 });
