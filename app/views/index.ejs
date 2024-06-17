@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/stylesheets/stylesheet-loading.css" />
 
     <!--script-->
-    <script type="text/javascript" src="/javascript/loading.js"></script>
+    <script type="text/javascript" src="./javascript/loading.js"></script>
 
     <title>チャットアプリ</title>
   </head>
@@ -32,36 +32,24 @@
     <header>
       <div class="container">
         <a href="/">
-          <img
-            class="header-logo"
-            width="150"
-            height="70"
-            src="/image/ISDL_logo.png"
-          />
+          <img class="header-logo" width="150" height="70" src="/image/ISDL_logo.png">
         </a>
       </div>
     </header>
 
     <div class="top-wrapper">
       <div class="container">
-        <h2>Please sign in</h2>
-        <form class="login" action="" method="POST">
-          <input class="id" type="text" name="userid" placeholder="Enter ID" />
-          <input
-            class="pass"
-            type="text"
-            name="password"
-            placeholder="Enter PASS"
-          />
-          <button class="sendButton" type="submit">送信</button>
+        <h2>ログイン</h2>
+        <form class="login" action="/login" method="POST">
+          <input class="name" type="text" name="username" placeholder="Enter username" />
+          <input class="pass" type="password" name="password" placeholder="Enter PASS" />
+          <button class="sendButton" type="submit">ログイン</button>
         </form>
 
         <div class="trans_registration">
-          <a class="trans_registration" href="registration"
-            >登録済みでない方はこちら</a
-          >
-          <a class="trans_registration" href="students">生徒</a>
-          <a class="trans_registration" href="teacher">先生</a>
+          <a class="trans_registration" href="registration">登録済みでない方はこちら</a>
+          <a class="trans_registration" href="students">生徒</a> <!--完成したら消す-->
+          <a class="trans_registration" href="teacher">先生</a> <!--完成したら消す-->
         </div>
       </div>
     </div>
@@ -112,3 +100,4 @@
     -->
   </body>
 </html>
+
