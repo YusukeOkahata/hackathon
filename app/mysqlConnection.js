@@ -3,19 +3,19 @@ const mysql = require("mysql");
 const pool = mysql.createPool({
   host: "db",
   user: "root",
-  password: "pass",
+  password: "ice_number1",
   port: 3306,
-  database: "dbname",
+  database: "chatapp",
 });
 
 //接続確認
 pool.getConnection((err, connection) => {
+  console.log("Connected to the database・・・");
   if (err) {
     console.error("Error connecting to the database:", err.message);
     return;
   }
 
-  console.log("Connected to the database・・・");
   console.log("データベース接続に成功しました!!!");
   connection.release(); // 接続をリリース
 });

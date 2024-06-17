@@ -7,7 +7,7 @@ const pool = require("../mysqlConnection");
 router.get("/", (req, res, next) => {
   pool.query("SELECT * from users;", (err, results, fields) => {
     if (err) {
-      console.error("teacher.js: sql execute error");
+      console.error(`teacher.js: sql execute error:${err}`);
     } else {
       console.log("teacher.js: sql execute success");
     }
