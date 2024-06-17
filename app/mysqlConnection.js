@@ -3,9 +3,9 @@ const mysql = require("mysql");
 const pool = mysql.createPool({
   host: "db",
   user: "root",
-  password: "pass",
+  password: "ice_number1",
   port: 3306,
-  database: "dbname",
+  database: "chatapp",
 });
 
 //接続確認
