@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
     } else {
       console.log("teacher.js: sql execute success");
     }
-    pool.end();
+    //pool.end();
     //res.send(results);
   });
 

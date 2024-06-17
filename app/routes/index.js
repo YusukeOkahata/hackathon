@@ -11,11 +11,20 @@ router.get("/", (req, res, next) => {
       console.log("index.js: sql execute success");
       console.log(`results :${results}`);
     }
-    pool.end();
+    //pool.end();
     //res.send(results);
   });
 
   res.render("index");
+});
+
+router.post("/", (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  console.log(`username:${username}`);
+  console.log(`pass:${password}`);
+
+  res.render("students");
 });
 
 module.exports = router;
