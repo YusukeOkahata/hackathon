@@ -19,6 +19,11 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  //console.log(`username:${username}`);
+  //console.log(`pass:${password}`);
+
   res.render("students");
 });
 
