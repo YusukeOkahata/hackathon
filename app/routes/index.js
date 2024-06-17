@@ -11,11 +11,15 @@ router.get("/", (req, res, next) => {
       console.log("index.js: sql execute success");
       console.log(`results :${results}`);
     }
-    pool.end();
+    //pool.end();
     //res.send(results);
   });
 
   res.render("index");
+});
+
+router.post("/", (req, res, next) => {
+  res.render("students");
 });
 
 module.exports = router;
