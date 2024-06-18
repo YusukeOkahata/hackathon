@@ -327,3 +327,14 @@ footer {
 footer h7 {
   font-size: 20px;
 }
+
+/* メッセージのスタイル */
+.student-message {
+  text-align: left;
+  color: blue;
+}
+
+.teacher-message {
+  text-align: right;
+  color: green;
+}
