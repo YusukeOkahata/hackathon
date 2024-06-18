@@ -9,13 +9,14 @@ router.get("/", (req, res, next) => {
       console.error("index.js: sql execute error");
     } else {
       console.log("index.js: sql execute success");
-      console.log(`results :${results}`);
+      //resultを文字列(json)形式で表示
+      //console.log(`results :`, JSON.stringify(results));
     }
     //pool.end();
     //res.send(results);
   });
 
-  res.render("index");
+  res.render("index", { error: null, route: null });
 });
 
 router.post("/", (req, res, next) => {
@@ -25,32 +26,39 @@ router.post("/", (req, res, next) => {
   console.log(`pass:${password}`);
 
   if (username == "Onoteacher" && password == "ice_number1") {
-    res.render("teacher");
+    res.render("teacher", { username: username });
   } else {
-    pool.query("USE chatapp");
-    pool.query(
-      'SELECT username FROM user WHERE username = "' +
-        username +
-        '" AND pass = "' +
-        password +
-        '";',
-      function (err, result, fields) {
-        if (
-          err ||
-          !result ||
-          result.length == 0 ||
-          result.affectedRows == 0 ||
-          !result[0] ||
-          !result[0].username ||
-          result[0].username != username
-        ) {
-          flg = false;
-          return;
-        }
+    const sql = "SELECT * FROM users WHERE username = ?";
+    pool.query(sql, [username], async (err, results) => {
+      if (err) {
+        res.render("index", { error: "Error during login", route: null });
       }
-    );
+      if (results.length === 0) {
+        res.render("index", { error: "User Not Found", route: null });
+      }
 
-    res.render("students");
+      const user = results[0];
+      // パスワードの文字列比較
+      if (password !== user.password) {
+        res.render("index", { error: "Invalid password", route: null });
+      }
+      /*パスワードハッシュ化の場合
+      const user = results[0];
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+
+      if (!isPasswordValid) {
+        return res.status(400).send("Invalid password");
+      }
+      */
+      // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
+      //req.session.username = username;
+
+      res.render("students", {
+        error: null,
+        route: "/students",
+        username: username,
+      });
+    });
   }
 });
 

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--icon-->
-    <link rel="icon" href="./img/oral-icon.svg" type="image/svg+xml" />
+    <link
+      rel="icon"
+      href="https://lh5.googleusercontent.com/qq75b9ARyuscR-o9P36tLOD5fBE4SHH_QKCH0ybfNuOh6y6SkR9SPJ4PsOz1qj2XsaVuZQYmyykhqEe-fB7yt5v4h3wIcU8"
+    />
 
     <!--css-->
     <link rel="stylesheet" href="/stylesheets/stylesheet-index.css" />
@@ -40,11 +43,13 @@
     <div class="top-wrapper">
       <div class="container">
         <h2>ログイン</h2>
-        <form class="login" action="/login" method="POST">
+        <form class="login" action="<%= route %>" method="POST">
           <input class="name" type="text" name="username" placeholder="Enter username" />
           <input class="pass" type="password" name="password" placeholder="Enter PASS" />
           <button class="sendButton" type="submit">ログイン</button>
         </form>
+
+        <p style="color: red"><%= error %></p>
 
         <div class="trans_registration">
           <a class="trans_registration" href="registration">登録済みでない方はこちら</a>
