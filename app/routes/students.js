@@ -19,4 +19,17 @@ router.get("/", (req, res, next) => {
   res.render("students", { username: username });
 });
 
+router.post("/", (req, res, next) => {
+  pool.query("SELECT * from questions;", (err, results, fields) => {
+    if (err) {
+      console.error("students.js: sql execute error");
+    } else {
+      console.log("students.js: sql execute success");
+      console.log(`results :`, JSON.stringify(results));
+    }
+  });
+
+  res.render("students", { username: username });
+});
+
 module.exports = router;

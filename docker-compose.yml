@@ -5,11 +5,11 @@ services:
     image: mysql:5.7
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
-      MYSQL_DATABASE: chatapp
-      MYSQL_ROOT_PASSWORD: ice_number1
+      MYSQL_DATABASE: process.env.MYSQL_DATABASE,
+      MYSQL_ROOT_PASSWORD: process.env.MYSQL_ROOT_PASSWORD,
       TZ: "Asia/Tokyo"
     ports:
-      - "3307:3306"
+      - 3307:3306
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/init:/docker-entrypoint-initdb.d
@@ -17,7 +17,7 @@ services:
   nodejs:
     image: node:12
     ports:
-      - "3000:3000"
+      - 3000:3000
     volumes:
       - ./app:/var/app
     command: node /var/app/bin/www
