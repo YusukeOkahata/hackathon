@@ -60,31 +60,6 @@ router.post("/", (req, res, next) => {
       });
     });
   }
-  /*
-    pool.query("USE chatapp");
-    pool.query(
-      'SELECT * FROM user WHERE username = "' +
-        username +
-        '" AND password = "' +
-        password +
-        '";',
-      function (err, result, fields) {
-        if (
-          err ||
-          !result ||
-          result.length == 0 ||
-          result.affectedRows == 0 ||
-          !result[0] ||
-          !result[0].username ||
-          result[0].username != username
-        ) {
-          flg = false;
-          res.render("students");
-          //return;
-        }
-      }
-    );
-  }*/
 });
 
 module.exports = router;
