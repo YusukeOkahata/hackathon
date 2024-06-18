@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../mysqlConnection");
-const bcrypt = require("bcryptjs");
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
