@@ -10,12 +10,13 @@ router.get("/", (req, res, next) => {
       console.error("students.js: sql execute error");
     } else {
       console.log("students.js: sql execute success");
+      console.log(`results :`, JSON.stringify(results));
     }
     //pool.end();
     //res.send(results);
   });
-
-  res.render("students");
+  //const username = req.session.username;
+  res.render("students", { username: username });
 });
 
 module.exports = router;

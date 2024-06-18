@@ -10,7 +10,8 @@ router.get("/", (req, res, next) => {
       console.error("index.js: sql execute error");
     } else {
       console.log("index.js: sql execute success");
-      console.log(`results :${results}`);
+      //resultを文字列(json)形式で表示
+      //console.log(`results :`, JSON.stringify(results));
     }
     //pool.end();
     //res.send(results);
@@ -26,7 +27,7 @@ router.post("/", (req, res, next) => {
   console.log(`pass:${password}`);
 
   if (username == "Onoteacher" && password == "ice_number1") {
-    res.render("teacher");
+    res.render("teacher", { username: username });
   } else {
     const sql = "SELECT * FROM users WHERE username = ?";
     pool.query(sql, [username], async (err, results) => {
@@ -50,8 +51,14 @@ router.post("/", (req, res, next) => {
         return res.status(400).send("Invalid password");
       }
       */
+      // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
+      //req.session.username = username;
 
-      res.render("students", { error: null, route: "/students" });
+      res.render("students", {
+        error: null,
+        route: "/students",
+        username: username,
+      });
     });
   }
   /*
