@@ -24,7 +24,34 @@ router.post("/", (req, res, next) => {
   console.log(`username:${username}`);
   console.log(`pass:${password}`);
 
-  res.render("students");
+  if (username == "Onoteacher" && password == "ice_number1") {
+    res.render("teacher");
+  } else {
+    pool.query("USE chatapp");
+    pool.query(
+      'SELECT username FROM user WHERE username = "' +
+        username +
+        '" AND pass = "' +
+        password +
+        '";',
+      function (err, result, fields) {
+        if (
+          err ||
+          !result ||
+          result.length == 0 ||
+          result.affectedRows == 0 ||
+          !result[0] ||
+          !result[0].username ||
+          result[0].username != username
+        ) {
+          flg = false;
+          return;
+        }
+      }
+    );
+
+    res.render("students");
+  }
 });
 
 module.exports = router;
