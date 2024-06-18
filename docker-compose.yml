@@ -5,8 +5,8 @@ services:
     image: mysql:5.7
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
-      MYSQL_DATABASE: process.env.MYSQL_DATABASE,
-      MYSQL_ROOT_PASSWORD: process.env.MYSQL_ROOT_PASSWORD,
+      MYSQL_DATABASE: chatapp
+      MYSQL_ROOT_PASSWORD: ice_number1
       TZ: "Asia/Tokyo"
     ports:
       - 3307:3306
