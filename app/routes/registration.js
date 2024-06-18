@@ -15,7 +15,26 @@ router.get("/", (req, res, next) => {
     //res.send(results);
   });
 
-  res.render("registration");
+  res.render("registration", { error: null, route: null });
+});
+
+// ユーザー登録エンドポイント
+router.post("/", (req, res, next) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  console.log(`regist_username:${username}`);
+  console.log(`regist_pass:${password}`);
+
+  const sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+  pool.query(sql, [username, password], (err, result) => {
+    if (err) {
+      res.render("registration", {
+        error: "Error registering user",
+        route: null,
+      });
+    }
+    res.render("index", { error: null, route: "/" });
+  });
 });
 
 module.exports = router;

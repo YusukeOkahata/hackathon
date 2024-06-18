@@ -45,7 +45,7 @@
     <div class="top-wrapper">
       <div class="container">
         <h2>Please sign in</h2>
-        <form class="login" action="" method="POST">
+        <form class="login" action="<%= route %>" method="POST">
           <input
             class="id"
             type="text"
@@ -60,6 +60,8 @@
           />
           <button class="sendButton" type="submit">送信</button>
         </form>
+
+        <p style="color: red"><%= error %></p>
 
         <div class="trans_registration">
           <a class="trans_registration" href="registration"
