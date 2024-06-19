@@ -26,7 +26,16 @@ router.post("/", (req, res, next) => {
   console.log(`pass:${password}`);
 
   if (username == "Onoteacher" && password == "ice_number1") {
-    res.render("teacher", { username: username });
+    const sql = "SELECT username FROM users WHERE username <> ?"; // 'Onoteacher'以外のusernameを指定;
+
+    pool.query(sql, ["Onoteacher"], (err, results) => {
+      if (err) {
+        console.error("Error fetching data: " + err.stack);
+        return;
+      }
+
+      res.render("teacher", { username: username, usersList: results });
+    });
   } else {
     const sql = "SELECT * FROM users WHERE username = ?";
     pool.query(sql, [username], async (err, results) => {

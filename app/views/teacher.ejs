@@ -71,6 +71,19 @@
     </header>
 
     <div class="top-wrapper">
+      <div class="container">
+        <h2>Message List</h2>
+        <hr width="60%" />
+        <ul>
+          <% usersList.forEach(usersList => { %>
+            <li><%= usersList.username %></li>
+            <hr width="50%" />
+            <br>
+          <% }); %>
+        </ul>
+      </div>
+      
+      <!--
       <div class="Message-form">
         <ul id="messages"></ul>
         <form id="form" action="">
@@ -81,6 +94,8 @@
           /><button>Send</button>
         </form>
       </div>
+      -->
+      
     </div>
     <div class="middle-wrapper"></div>
     <div class="bottom-wrapper"></div>
