@@ -32,16 +32,33 @@ router.post("/", (req, res, next) => {
     pool.query(sql, [username], async (err, results) => {
       if (err) {
         res.render("index", { error: "Error during login", route: null });
-      }
-      if (results.length === 0) {
+      } else if (results.length === 0) {
         res.render("index", { error: "User Not Found", route: null });
+      } else {
+        const user = results[0];
+        // パスワードの文字列比較
+        if (password !== user.password) {
+          res.render("index", { error: "Invalid password", route: null });
+        } else {
+          // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
+          req.session.username = username;
+          req.session.user_id = user.user_id; // もしくは必要な情報をセッションに保存
+
+          res.render("students", {
+            error: null,
+            route: "/students",
+            username: username,
+          });
+        }
       }
 
-      const user = results[0];
-      // パスワードの文字列比較
-      if (password !== user.password) {
-        res.render("index", { error: "Invalid password", route: null });
-      }
+      
+      //const user = results[0];
+      //// パスワードの文字列比較
+      //if (password !== user.password) {
+      //  res.render("index", { error: "Invalid password", route: null });
+      //}
+      
       /*パスワードハッシュ化の場合
       const user = results[0];
       const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -52,12 +69,13 @@ router.post("/", (req, res, next) => {
       */
       // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
       //req.session.username = username;
-
+/*
       res.render("students", {
         error: null,
         route: "/students",
         username: username,
       });
+      */
     });
   }
 });
