@@ -34,9 +34,9 @@ router.get("/", (req, res, next) => {
     });
 
     // 結果を出力
-    console.log("返信済:", repliedCount);
-    console.log("未返信:", unrepliedCount);
-    console.log("未返信のユーザーID:", Array.from(unrepliedUsers).join(", "));
+    //console.log("返信済:", repliedCount);
+    //console.log("未返信:", unrepliedCount);
+    //console.log("未返信のユーザーID:", Array.from(unrepliedUsers).join(", "));
 
     res.render("status", {
       repliedCount: repliedCount,
