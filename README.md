@@ -71,52 +71,265 @@
 
 <pre>
 .
-├── .devcontainer
-│ └── devcontainer.json
-├── .env
-├── .github
-│ ├── action
-│ ├── release-drafter.yml
-│ └── workflows
-├── .gitignore
-├── Makefile
-├── README.md
-├── backend
-│ ├── .vscode
-│ ├── application
-│ ├── docs
-│ ├── manage.py
-│ ├── output
-│ ├── poetry.lock
-│ ├── project
-│ └── pyproject.toml
-├── containers
-│ ├── django
-│ ├── front
-│ ├── mysql
-│ └── nginx
-├── docker-compose.yml
-├── frontend
-│ ├── .gitignore
-│ ├── README.md
-│ ├── **test**
-│ ├── components
-│ ├── features
-│ ├── next-env.d.ts
-│ ├── package-lock.json
-│ ├── package.json
-│ ├── pages
-│ ├── postcss.config.js
-│ ├── public
-│ ├── styles
-│ ├── tailwind.config.js
-│ └── tsconfig.json
-└── infra
-├── .gitignore
-├── docker-compose.yml
-├── main.tf
-├── network.tf
-└── variables.tf
+├─app
+│  ├─bin
+│  ├─node_modules
+│  │  ├─.bin
+│  │  ├─@mapbox
+│  │  ├─accepts
+│  │  ├─array-flatten
+│  │  ├─basic-auth
+│  │  ├─bcryptjs
+│  │  │  ├─.vscode
+│  │  │  ├─bin
+│  │  │  ├─dist
+│  │  │  ├─externs
+│  │  │  ├─scripts
+│  │  │  ├─src
+│  │  │  │  └─bcrypt
+│  │  │  │      ├─prng
+│  │  │  │      └─util
+│  │  │  └─tests
+│  │  ├─bignumber.js
+│  │  │  └─doc
+│  │  ├─body-parser
+│  │  │  └─lib
+│  │  │      └─types
+│  │  ├─bytes
+│  │  ├─content-disposition
+│  │  ├─content-type
+│  │  ├─cookie
+│  │  ├─cookie-parser
+│  │  ├─cookie-signature
+│  │  ├─core-util-is
+│  │  │  └─lib
+│  │  ├─debug
+│  │  │  └─src
+│  │  ├─depd
+│  │  │  └─lib
+│  │  │      ├─browser
+│  │  │      └─compat
+│  │  ├─destroy
+│  │  ├─ee-first
+│  │  ├─ejs
+│  │  │  └─lib
+│  │  ├─encodeurl
+│  │  ├─escape-html
+│  │  ├─etag
+│  │  ├─express
+│  │  │  └─lib
+│  │  │      ├─middleware
+│  │  │      └─router
+│  │  ├─express-session
+│  │  │  ├─node_modules
+│  │  │  │  ├─cookie
+│  │  │  │  ├─cookie-signature
+│  │  │  │  ├─depd
+│  │  │  │  │  └─lib
+│  │  │  │  │      └─browser
+│  │  │  │  └─safe-buffer
+│  │  │  └─session
+│  │  ├─finalhandler
+│  │  ├─forwarded
+│  │  ├─fresh
+│  │  ├─http
+│  │  ├─http-errors
+│  │  ├─iconv-lite
+│  │  │  ├─encodings
+│  │  │  │  └─tables
+│  │  │  └─lib
+│  │  ├─inherits
+│  │  ├─ipaddr.js
+│  │  │  └─lib
+│  │  ├─isarray
+│  │  ├─media-typer
+│  │  ├─merge-descriptors
+│  │  ├─methods
+│  │  ├─mime
+│  │  │  └─build
+│  │  ├─mime-db
+│  │  ├─mime-types
+│  │  ├─morgan
+│  │  ├─ms
+│  │  ├─mysql
+│  │  │  └─lib
+│  │  │      └─protocol
+│  │  │          ├─constants
+│  │  │          ├─packets
+│  │  │          └─sequences
+│  │  ├─negotiator
+│  │  │  └─lib
+│  │  ├─on-finished
+│  │  ├─on-headers
+│  │  ├─parseurl
+│  │  ├─path-to-regexp
+│  │  ├─process-nextick-args
+│  │  ├─proxy-addr
+│  │  ├─qs
+│  │  │  ├─dist
+│  │  │  ├─lib
+│  │  │  └─test
+│  │  ├─random-bytes
+│  │  ├─range-parser
+│  │  ├─raw-body
+│  │  ├─readable-stream
+│  │  │  ├─doc
+│  │  │  │  └─wg-meetings
+│  │  │  └─lib
+│  │  │      └─internal
+│  │  │          └─streams
+│  │  ├─safe-buffer
+│  │  ├─safer-buffer
+│  │  ├─send
+│  │  ├─serve-static
+│  │  ├─setprototypeof
+│  │  ├─sqlstring
+│  │  │  └─lib
+│  │  ├─statuses
+│  │  ├─string_decoder
+│  │  │  └─lib
+│  │  ├─type-is
+│  │  ├─uid-safe
+│  │  ├─unpipe
+│  │  ├─util-deprecate
+│  │  ├─utils-merge
+│  │  └─vary
+│  ├─public
+│  │  ├─image
+│  │  ├─javascript
+│  │  └─stylesheets
+│  ├─routes
+│  └─views
+├─mysql
+│  ├─data
+│  │  ├─chatapp
+│  │  ├─mysql
+│  │  ├─performance_schema
+│  │  └─sys
+│  └─init
+└─node_modules
+    ├─.bin
+    ├─@mapbox
+    │  └─node-pre-gyp
+    │      ├─.github
+    │      │  └─workflows
+    │      ├─bin
+    │      └─lib
+    │          └─util
+    │              └─nw-pre-gyp
+    ├─abbrev
+    ├─agent-base
+    │  ├─dist
+    │  │  └─src
+    │  └─src
+    ├─ansi-regex
+    ├─aproba
+    ├─are-we-there-yet
+    │  └─lib
+    ├─balanced-match
+    │  └─.github
+    ├─bcrypt
+    │  ├─.github
+    │  │  └─workflows
+    │  ├─examples
+    │  ├─lib
+    │  │  └─binding
+    │  │      └─napi-v3
+    │  ├─src
+    │  └─test
+    ├─bcryptjs
+    │  ├─.vscode
+    │  ├─bin
+    │  ├─dist
+    │  ├─externs
+    │  ├─scripts
+    │  ├─src
+    │  │  └─bcrypt
+    │  │      ├─prng
+    │  │      └─util
+    │  └─tests
+    ├─brace-expansion
+    ├─chownr
+    ├─color-support
+    ├─concat-map
+    │  ├─example
+    │  └─test
+    ├─console-control-strings
+    ├─debug
+    │  └─src
+    ├─delegates
+    │  └─test
+    ├─detect-libc
+    │  └─lib
+    ├─emoji-regex
+    │  └─es2015
+    ├─fs-minipass
+    │  └─node_modules
+    │      └─minipass
+    ├─fs.realpath
+    ├─gauge
+    ├─glob
+    ├─has-unicode
+    ├─https-proxy-agent
+    │  └─dist
+    ├─inflight
+    ├─inherits
+    ├─is-fullwidth-code-point
+    ├─make-dir
+    │  └─node_modules
+    │      ├─.bin
+    │      └─semver
+    │          └─bin
+    ├─minimatch
+    ├─minipass
+    ├─minizlib
+    │  └─node_modules
+    │      └─minipass
+    ├─mkdirp
+    │  ├─bin
+    │  └─lib
+    ├─ms
+    ├─node-addon-api
+    │  └─tools
+    ├─node-fetch
+    │  └─lib
+    ├─nopt
+    │  ├─bin
+    │  └─lib
+    ├─npmlog
+    ├─object-assign
+    ├─once
+    ├─path-is-absolute
+    ├─readable-stream
+    │  └─lib
+    │      └─internal
+    │          └─streams
+    ├─rimraf
+    ├─safe-buffer
+    ├─semver
+    │  ├─bin
+    │  ├─classes
+    │  ├─functions
+    │  ├─internal
+    │  └─ranges
+    ├─set-blocking
+    ├─signal-exit
+    ├─string-width
+    ├─string_decoder
+    │  └─lib
+    ├─strip-ansi
+    ├─tar
+    │  └─lib
+    ├─tr46
+    │  └─lib
+    ├─util-deprecate
+    ├─webidl-conversions
+    │  └─lib
+    ├─whatwg-url
+    │  └─lib
+    ├─wide-align
+    ├─wrappy
+    └─yallist
 </pre>
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
@@ -143,6 +356,16 @@ DJANGO_SETTINGS_MODULE=project.settings.local
 .env ファイルを作成後、以下のコマンドで開発環境を構築
 -->
 
+app ディレクトリに移動し，依存関係をインストール
+
+```
+cd app
+npm install
+cd ../
+```
+
+コンテナを起動し，開発環境を構築
+
 ```
 docker-compose up --build
 ```
@@ -159,78 +382,3 @@ http://localhost:3000 にアクセスできるか確認
 ```
 docker-compose down
 ```
-
-### 環境変数の一覧
-
-| 変数名                 | 役割                                      | デフォルト値                       | DEV 環境での値                           |
-| ---------------------- | ----------------------------------------- | ---------------------------------- | ---------------------------------------- |
-| MYSQL_ROOT_PASSWORD    | MySQL のルートパスワード（Docker で使用） | root                               |                                          |
-| MYSQL_DATABASE         | MySQL のデータベース名（Docker で使用）   | django-db                          |                                          |
-| MYSQL_USER             | MySQL のユーザ名（Docker で使用）         | django                             |                                          |
-| MYSQL_PASSWORD         | MySQL のパスワード（Docker で使用）       | django                             |                                          |
-| MYSQL_HOST             | MySQL のホスト名（Docker で使用）         | db                                 |                                          |
-| MYSQL_PORT             | MySQL のポート番号（Docker で使用）       | 3306                               |                                          |
-| SECRET_KEY             | Django のシークレットキー                 | secretkey                          | 他者に推測されないランダムな値にすること |
-| ALLOWED_HOSTS          | リクエストを許可するホスト名              | localhost 127.0.0.1 [::1] back web | フロントのホスト名                       |
-| DEBUG                  | デバッグモードの切り替え                  | True                               | False                                    |
-| TRUSTED_ORIGINS        | CORS で許可するオリジン                   | http://localhost                   |                                          |
-| DJANGO_SETTINGS_MODULE | Django アプリケーションの設定モジュール   | project.settings.local             | project.settings.dev                     |
-
-### コマンド一覧
-
-| Make                | 実行する処理                                                            | 元のコマンド                                                                               |
-| ------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| make prepare        | node_modules のインストール、イメージのビルド、コンテナの起動を順に行う | docker-compose run --rm front npm install<br>docker-compose up -d --build                  |
-| make up             | コンテナの起動                                                          | docker-compose up -d                                                                       |
-| make build          | イメージのビルド                                                        | docker-compose build                                                                       |
-| make down           | コンテナの停止                                                          | docker-compose down                                                                        |
-| make loaddata       | テストデータの投入                                                      | docker-compose exec app poetry run python manage.py loaddata crm.json                      |
-| make makemigrations | マイグレーションファイルの作成                                          | docker-compose exec app poetry run python manage.py makemigrations                         |
-| make migrate        | マイグレーションを行う                                                  | docker-compose exec app poetry run python manage.py migrate                                |
-| make show_urls      | エンドポイントをターミナル上で一覧表示                                  | docker-compose exec app poetry run python manage.py show_urls                              |
-| make shell          | テストデータの投入                                                      | docker-compose exec app poetry run python manage.py debugsqlshell                          |
-| make superuser      | スーパーユーザの作成                                                    | docker-compose exec app poetry run python manage.py createsuperuser                        |
-| make test           | テストを実行                                                            | docker-compose exec app poetry run pytest                                                  |
-| make test-cov       | カバレッジを表示させた上でテストを実行                                  | docker-compose exec app poetry run pytest --cov                                            |
-| make format         | black と isort を使ってコードを整形                                     | docker-compose exec app poetry run black . <br> docker-compose exec app poetry run isort . |
-| make update         | Poetry 内のパッケージの更新                                             | docker-compose exec app poetry update                                                      |
-| make app            | アプリケーション のコンテナへ入る                                       | docker exec -it app bash                                                                   |
-| make db             | データベースのコンテナへ入る                                            | docker exec -it db bash                                                                    |
-| make pdoc           | pdoc ドキュメントの作成                                                 | docker-compose exec app env CI_MAKING_DOCS=1 poetry run pdoc -o docs application           |
-| make init           | Terraform の初期化                                                      | docker-compose -f infra/docker-compose.yml run --rm terraform init                         |
-| make fmt            | Terraform の設定ファイルをフォーマット                                  | docker-compose -f infra/docker-compose.yml run --rm terraform fmt                          |
-| make validate       | Terraform の構成ファイルが正常であることを確認                          | docker-compose -f infra/docker-compose.yml run --rm terraform validate                     |
-| make show           | 現在のリソースの状態を参照                                              | docker-compose -f infra/docker-compose.yml run --rm terraform show                         |
-| make apply          | Terraform の内容を適用                                                  | docker-compose -f infra/docker-compose.yml run --rm terraform apply                        |
-| make destroy        | Terraform で構成されたリソースを削除                                    | docker-compose -f infra/docker-compose.yml run --rm terraform destroy                      |
-
-### リモートデバッグの方法
-
-リモートデバッグ を使用する際は以下の url を参考に設定してください<br>
-[Django のコンテナへリモートデバッグしよう！](https://qiita.com/shun198/items/9e4fcb4479385217c323)
-
-## トラブルシューティング
-
-### .env: no such file or directory
-
-.env ファイルがないので環境変数の一覧を参考に作成しましょう
-
-### docker daemon is not running
-
-Docker Desktop が起動できていないので起動させましょう
-
-### Ports are not available: address already in use
-
-別のコンテナもしくはローカル上ですでに使っているポートがある可能性があります
-<br>
-下記記事を参考にしてください
-<br>
-[コンテナ起動時に Ports are not available: address already in use が出た時の対処法について](https://qiita.com/shun198/items/ab6eca4bbe4d065abb8f)
-
-### Module not found
-
-make build
-
-を実行して Docker image を更新してください
-
-<p align="right">(<a href="#top">トップへ</a>)</p>
