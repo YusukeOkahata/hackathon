@@ -20,7 +20,7 @@ CREATE TABLE `questions` (
   `status` TEXT NOT NULL,
   `question_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`question_id`),
-  FOREIGN KEY (`question_id`) REFERENCES users(`user_id`)
+  FOREIGN KEY (`question_by`) REFERENCES users(`user_id`)
 );
 
 DROP TABLE IF EXISTS `tags`;

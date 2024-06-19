@@ -25,15 +25,28 @@ router.post("/", (req, res, next) => {
   console.log(`regist_username:${username}`);
   console.log(`regist_pass:${password}`);
 
-  const sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-  pool.query(sql, [username, password], (err, result) => {
+  const sql = `
+  INSERT INTO users (username, password)
+  SELECT ?, ?
+  WHERE NOT EXISTS (
+    SELECT 1 FROM users WHERE username = ?
+  );
+`;
+  pool.query(sql, [username, password, username], (err, result) => {
     if (err) {
       res.render("registration", {
         error: "Error registering user",
         route: null,
       });
+    } else if (result.affectedRows === 0) {
+      // ユーザー名が既に存在する場合
+      res.render("registration", {
+        error: "Username already exists",
+        route: null,
+      });
+    } else {
+      res.render("index", { error: null, route: "/" });
     }
-    res.render("index", { error: null, route: "/" });
   });
 });
 
