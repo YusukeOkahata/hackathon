@@ -19,6 +19,7 @@ CREATE TABLE `messages` (
   `user_id` INT(11) NOT NULL,
   `message` TEXT NOT NULL,
   `sender` VARCHAR(255) NOT NULL,
+  --`sender` ENUM('student', 'teacher') NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`message_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
