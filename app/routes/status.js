@@ -5,18 +5,36 @@ const pool = require("../mysqlConnection");
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
-  pool.query("SELECT * from questions;", (err, results, fields) => {
+  const query = "SELECT status FROM questions";
+  // 初期化: '返信済' と '未返信' のカウント
+  let repliedCount = 0;
+  let unrepliedCount = 0;
+  pool.query(query, (err, results) => {
     if (err) {
-      console.error("status.js: sql execute error");
-    } else {
-      console.log("status.js: sql execute success");
-      console.log(`results :`, JSON.stringify(results));
+      console.error("Error fetching data: " + err.stack);
+      return;
     }
-    //pool.end();
-    //res.send(results);
-  });
 
-  res.render("status");
+    // 結果をループしてカウントする
+    results.forEach((row) => {
+      const status = row.status;
+
+      if (status === "返信済") {
+        repliedCount++;
+      } else if (status === "未返信") {
+        unrepliedCount++;
+      }
+    });
+
+    // 結果を出力
+    console.log("返信済:", repliedCount);
+    console.log("未返信:", unrepliedCount);
+
+    res.render("status", {
+      repliedCount: repliedCount,
+      unrepliedCount: unrepliedCount,
+    });
+  });
 });
 
 module.exports = router;
