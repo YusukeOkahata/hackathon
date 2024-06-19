@@ -68,6 +68,10 @@ header {
   color: black;
 }
 
+.chatList a {
+  color: black;
+}
+
 li {
   list-style: none;
 }

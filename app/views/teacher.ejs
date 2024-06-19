@@ -76,7 +76,9 @@
         <hr width="60%" />
         <ul>
           <% usersList.forEach(usersList => { %>
-            <li><%= usersList.username %></li>
+            <div class="chatList">
+              <a href=""><li><%= usersList.username %></li></a>
+            </div>
             <hr width="50%" />
             <br>
           <% }); %>
