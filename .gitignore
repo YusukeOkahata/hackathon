@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-node_modules/
-/mysql/data
-=======
 /mysql/data
 /app/node_modules
->>>>>>> 1deaf72ec934e20c426e887cbe586e2811f0a4aa
