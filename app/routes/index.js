@@ -62,10 +62,17 @@ router.post("/", (req, res, next) => {
       // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
       //req.session.username = username;
 
-      res.render("students", {
-        error: null,
-        route: "/students",
-        username: username,
+      //students.ejsに遷移したあとの処理
+      const sql = `SELECT q.content, u.username FROM questions q JOIN users u ON q.question_by = u.user_id WHERE u.username = ?`;
+      pool.query(sql, [username], (err, results) => {
+        if (err) throw err;
+        console.log(results);
+        res.render("students", {
+          error: null,
+          route: "/students",
+          username: username,
+          questions: results,
+        });
       });
     });
   }

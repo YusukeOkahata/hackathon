@@ -48,18 +48,27 @@ a {
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgb(255, 255, 255);
   max-width: 100%;
   height: 90px;
 }
 
+header a {
+  color: black;
+}
+
 .header-logo {
+  flex: 1;
+  text-align: center;
   padding: 0 40px;
   margin: 0;
   /*float:left;*/
 }
 
-.header-list li {
+.logout_button {
   padding: 0px 20px;
   float: left;
 }
@@ -234,6 +243,7 @@ nav li {
 }
 
 /*button*/
+
 .btn,
 a.btn,
 button.btn {
@@ -254,7 +264,7 @@ button.btn {
   vertical-align: middle;
   text-decoration: none;
   letter-spacing: 0.1em;
-  color: rgb(240, 240, 240);
+  color: rgb(10, 10, 10);
   border-radius: 0.5rem;
 }
 
@@ -270,6 +280,9 @@ a.btn-svg {
   text-decoration: none;
 
   background-color: transparent;
+  /*display: flex;*/
+  align-items: center;
+  justify-content: center;
 }
 
 a.btn-svg svg {
@@ -277,15 +290,15 @@ a.btn-svg svg {
   top: 0;
   left: 0;
 
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
 }
 
 a.btn-svg svg rect {
   -webkit-transition: all 400ms ease;
   transition: all 400ms ease;
 
-  stroke: rgb(240, 240, 240);
+  stroke: rgb(8, 8, 8);
   stroke-width: 2;
   stroke-dasharray: 200px, 16px;
   stroke-dashoffset: 70px;
@@ -296,7 +309,7 @@ a.btn-svg:hover svg rect {
 }
 
 a.btn-svg span {
-  color: rgb(240, 240, 240);
+  color: rgb(12, 12, 12);
   font-size: 15px;
 }
 

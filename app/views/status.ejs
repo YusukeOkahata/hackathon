@@ -59,7 +59,7 @@
 
     <!--ここからサイドバーのところ-->
     <div class="header">
-      <div class="container">
+      <div class="header-logo">
         <a href="/">
           <img
             class="header-logo"
@@ -68,6 +68,7 @@
             src="/image/ISDL_logo.png"
           />
         </a>
+        <button class="header__button" onclick="navigate()">LOGOUT</button>
       </div>
     </div>
 
@@ -89,6 +90,12 @@
         >
       </div>
     </footer>
+
+    <script>
+      function navigate() {
+        window.location.href = "/";
+      }
+    </script>
 
     <!--サイドバー-->
     <script

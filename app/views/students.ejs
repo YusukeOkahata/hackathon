@@ -33,19 +33,23 @@
 
   <body>
     <header>
-      <div class="container">
-        <a href="/">
-          <img
-            class="header-logo"
-            width="150"
-            height="70"
-            src="/image/ISDL_logo.png"
-          />
-        </a>
-      </div>
+      <a class="header-logo" href="/">
+        <img
+          class="header-logo"
+          width="150"
+          height="70"
+          src="/image/ISDL_logo.png"
+        />
+      </a>
+      <button class="header__button" onclick="navigate()">LOGOUT</button>
     </header>
 
     <div class="top-wrapper">
+      <ul>
+        <% questions.forEach(question => { %>
+        <li><%= question.content %></li>
+        <% }); %>
+      </ul>
       <ul id="messages"></ul>
       <form id="form" action="" method="post">
         <input id="input" autocomplete="off" /><button>Send</button>
@@ -61,6 +65,12 @@
         >
       </div>
     </footer>
+
+    <script>
+      function navigate() {
+        window.location.href = "/";
+      }
+    </script>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
