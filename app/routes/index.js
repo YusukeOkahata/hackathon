@@ -7,16 +7,18 @@ router.get("/", (req, res, next) => {
   pool.query("SELECT * from users;", (err, results, fields) => {
     if (err) {
       console.error("index.js: sql execute error");
+      res.render("index", { error: "Error fetching users", route: null });
     } else {
       console.log("index.js: sql execute success");
       //resultを文字列(json)形式で表示
       //console.log(`results :`, JSON.stringify(results));
+      res.render("index", { error: null, route: null });
     }
     //pool.end();
     //res.send(results);
   });
 
-  res.render("index", { error: null, route: null });
+  //res.render("index", { error: null, route: null });
 });
 
 router.post("/", (req, res, next) => {
@@ -27,9 +29,10 @@ router.post("/", (req, res, next) => {
 
   if (username == "Onoteacher" && password == "ice_number1") {
     res.render("teacher", { username: username });
-  } else {
+    return;
+  } 
     const sql = "SELECT * FROM users WHERE username = ?";
-    pool.query(sql, [username], async (err, results) => {
+    pool.query(sql, [username], (err, results) => {
       if (err) {
         res.render("index", { error: "Error during login", route: null });
       } else if (results.length === 0) {
@@ -44,11 +47,12 @@ router.post("/", (req, res, next) => {
           req.session.username = username;
           req.session.user_id = user.user_id; // もしくは必要な情報をセッションに保存
 
-          res.render("students", {
-            error: null,
-            route: "/students",
-            username: username,
-          });
+          res.redirect("/students")
+          //res.render("students", {
+          //  error: null,
+          //  route: "/students",
+          //  username: username,
+          //});
         }
       }
 
@@ -77,7 +81,7 @@ router.post("/", (req, res, next) => {
       });
       */
     });
-  }
+  
 });
 
 module.exports = router;

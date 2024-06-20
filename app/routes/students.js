@@ -39,11 +39,12 @@ router.get("/", (req, res, next) => {
   if (!req.session.username) {
   res.redirect("/");
   return;
-}
+  }
 //
-
-  pool.query("SELECT * FROM messages ORDER BY created_at ASC", (err, results) => {
-  if (err) {
+  const userId = req.session.user_id;
+  
+  pool.query("SELECT * FROM messages WHERE user_id = ? ORDER BY created_at ASC", [userId], (err, results) => {
+    if (err) {
       console.error("students.js: sql execute error");
       res.status(500).send("Database query error");
     } else {
@@ -63,9 +64,9 @@ router.post("/message", (req, res, next) => {
   //
   //const { userId, message, sender } = req.body;
   //
-  const { message, sender } = req.body;
+  const { message } = req.body;
   const username = req.session.username;
-  //const user_id = req.session.user_id; // セッションからuser_idを取得
+  //const userId = req.session.user_id; // セッションからuser_idを取得
 
   //if (!user_id) {
   //  res.status(403).send("Unauthorized");
@@ -89,6 +90,7 @@ router.post("/message", (req, res, next) => {
   );
 });
   */
+ 
   const getUserIdQuery = "SELECT user_id FROM users WHERE username = ?";
   
   pool.query(getUserIdQuery, [username], (err, results) => {
@@ -104,18 +106,19 @@ router.post("/message", (req, res, next) => {
     }
 
     const userId = results[0].user_id;
+    
 
-    // メッセージを挿入するクエリ
-    const insertMessageQuery = "INSERT INTO messages (user_id, message, sender) VALUES (?, ?, ?)";
-    pool.query(insertMessageQuery, [userId, message, sender], (err, results) => {
-      if (err) {
-        console.error("Error inserting message:", err.message);
-        res.status(500).send("Error inserting message" + err.message);
-      } else {
-        res.status(200).send("Message saved");
-      }
-    });
+  // メッセージを挿入するクエリ
+  const insertMessageQuery = "INSERT INTO messages (user_id, message, sender) VALUES (?, ?, ?)";
+  pool.query(insertMessageQuery, [userId, message, username], (err, results) => {
+    if (err) {
+      console.error("Error inserting message:", err.message);
+      res.status(500).send("Error inserting message" + err.message);
+    } else {
+      res.status(200).send("Message saved");
+    }
   });
+});
 });
 
 
