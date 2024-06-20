@@ -18,8 +18,9 @@
     <script type="text/javascript" src="/javascript/loading.js"></script>
 
     <title><%= username %></title>
-  </head>
 
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
   <!--loading-->
   <div id="loader">
     <div class="spinner">
@@ -30,7 +31,6 @@
       <div class="rect5"></div>
     </div>
   </div>
-
   <body>
     <header>
       <a class="header-logo" href="/">
@@ -66,6 +66,7 @@
       </div>
     </footer>
 
+    <<<<<<< HEAD
     <script>
       function navigate() {
         window.location.href = "/";
@@ -74,27 +75,32 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      let socket = io();
+            let socket = io();
+      =======
+      <script>
+        let socket = io();
+      >>>>>>> docker2_sub
 
-      const form = document.getElementById("form");
-      const input = document.getElementById("input");
-      const messages = document.getElementById("messages");
-      //console.log(form);
+        const form = document.getElementById("form");
+        const input = document.getElementById("input");
+        const messages = document.getElementById("messages");
+        //console.log(form);
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (input.value) {
-          socket.emit("chat message", input.value);
-          input.value = "";
-        }
-      });
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (input.value) {
+            socket.emit("chat message", { message: input.value, sender: '<%= username %>' });
+            input.value = "";
+          }
+        });
 
-      socket.on("chat message", function (msg) {
-        let item = document.createElement("li");
-        item.textContent = msg;
-        messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
-      });
+        socket.on("chat message", function (msg) {
+          let item = document.createElement("li");
+          item.textContent = msg.message;
+          item.className = msg.sender === "student" ? "right" : "left";
+          messages.appendChild(item);
+          window.scrollTo(0, document.body.scrollHeight);
+        });
     </script>
   </body>
 </html>

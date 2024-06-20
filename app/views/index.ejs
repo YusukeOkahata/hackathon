@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/stylesheets/stylesheet-loading.css" />
 
     <!--script-->
-    <script type="text/javascript" src="/javascript/loading.js"></script>
+    <script type="text/javascript" src="./javascript/loading.js"></script>
 
     <title>チャットアプリ</title>
   </head>
@@ -45,13 +45,13 @@
 
     <div class="top-wrapper">
       <div class="container">
-        <h2>ログインフォーム</h2>
-        <form class="login" action="<%= route %>" method="POST">
+        <h2>ログイン</h2>
+        <form class="login" action="/students" method="POST">
           <input
-            class="id"
+            class="name"
             type="text"
             name="username"
-            placeholder="Enter ID"
+            placeholder="Enter username"
           />
           <input
             class="pass"
@@ -59,7 +59,7 @@
             name="password"
             placeholder="Enter PASS"
           />
-          <button class="sendButton" type="submit">送信</button>
+          <button class="sendButton" type="submit">ログイン</button>
         </form>
 
         <p style="color: red"><%= error %></p>
