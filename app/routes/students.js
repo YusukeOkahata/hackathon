@@ -133,7 +133,7 @@ router.post("/message", (req, res, next) => {
   );
 });
   */
- /*
+/*
  
   const getUserIdQuery = "SELECT user_id FROM users WHERE username = ?";
   
@@ -171,6 +171,7 @@ router.post("/send", (req, res) => {
   const username = req.session.username;
   const password = req.session.password;
   const message = req.body.message;
+  const status = "未返信";
 
   if (!username || !password) {
     return res.redirect("/");
@@ -190,8 +191,8 @@ router.post("/send", (req, res) => {
         const userId = results[0].user_id;
 
         pool.query(
-          "INSERT INTO messages (user_id, message, sender) VALUES (?, ?, ?)",
-          [userId, message, username],
+          "INSERT INTO messages (user_id, message, status, sender) VALUES (?, ?, ?, ?)",
+          [userId, message, status, username],
           (err) => {
             //if (err) throw err;
             if (err) {
@@ -208,6 +209,5 @@ router.post("/send", (req, res) => {
     }
   );
 });
-
 
 module.exports = router;
