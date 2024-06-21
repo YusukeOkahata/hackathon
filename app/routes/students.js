@@ -75,20 +75,24 @@ router.get("/", (req, res) => {
 
       if (results.length > 0) {
         const userId = results[0].user_id;
+        const send2 = "Onoteacher";
+        console.log(username);
+        console.log(userId);
 
-        pool.query(
-          "SELECT * FROM messages WHERE user_id = ? ORDER BY created_at ASC",
-          [userId],
-          (err, messages) => {
-            //if (err) throw err;
-            if (err) {
-              console.error("Database query error:", err);
-              return res.status(500).send("Database query error");
-            }
+        const query =
+          "SELECT * FROM messages WHERE (user_id = ? AND send2 = ?) OR (sender = 'Onoteacher' AND send2 = ?)ORDER BY created_at ASC";
+        console.log("Executing query:", query, "with params:", [userId, send2]);
 
-            res.render("students", { username: username, messages: messages });
+        pool.query(query, [userId, send2, username], (err, messages) => {
+          //if (err) throw err;
+          if (err) {
+            console.error("Database query error:", err);
+            return res.status(500).send("Database query error");
           }
-        );
+          console.log("Messages:", messages);
+
+          res.render("students", { username: username, messages: messages });
+        });
       } else {
         res.redirect("/");
       }
@@ -172,7 +176,7 @@ router.post("/send", (req, res) => {
   const password = req.session.password;
   const message = req.body.message;
   const status = "未返信";
-  const send2 ="Onoteacher";
+  const send2 = "Onoteacher";
 
   if (!username || !password) {
     return res.redirect("/");

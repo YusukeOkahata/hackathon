@@ -116,7 +116,9 @@ router.post("/send", (req, res) => {
   const password = req.session.password;
   const message = req.body.message;
   const status = "返信済";
-  const send2 = "Onoteacher";
+  const send2 = req.body.selectedUser;
+
+  console.log("選択されたユーザー:", send2);
 
   if (!username || !password) {
     return res.redirect("/");
