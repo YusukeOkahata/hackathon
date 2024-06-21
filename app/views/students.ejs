@@ -41,20 +41,25 @@
     </header>
 
 <div class="top-wrapper">
-  <div class="chat-messages" id="chat-messages">
-    <% if (messages && messages.length > 0) { %>
-      <% messages.forEach(function(message) { %>
-        <div class="message">
-          <span class="message-sender"><%= message.sender %>:</span>
-          <span class="message-text"><%= message.message %></span>
-        </div>
-      <% }) %>
-    <% } %>
+  <div class="message-form">
+    <div class="chat-messages" id="chat-messages">
+      <% if (messages && messages.length > 0) { %>
+        <% messages.forEach(function(message) { %>
+          <div class="message-container <%= message.sender === username ? 'teacher':'student'%>"">
+            <div class="message">
+              <span class="message-sender"><%= message.sender %>:</span>
+              <span class="message-text"><%= message.message %></span>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+    <ul id="messages"></ul>
+    <form id="form" action="/students/send" method="POST">
+      <input id="input" name="message" autocomplete="off" /><button>送信</button>
+    </form>
   </div>
-  <ul id="messages"></ul>
-  <form id="form" action="/students/send" method="POST">
-    <input id="input" name="message" autocomplete="off" /><button>送信</button>
-  </form>
+  </div>
 </div>
 
 <div class="middle-wrapper"></div>

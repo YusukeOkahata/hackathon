@@ -207,6 +207,44 @@ nav li {
   background: #efefef;
 }
 
+.message-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.message-container.teacher {
+  justify-content: flex-end;
+}
+
+.message-container.student {
+  justify-content: flex-start;
+}
+
+.message {
+  max-width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #efefef;
+  color: #000;
+}
+
+.student-message {
+  text-align: left;
+  background-color: #fffacd;
+  border-radius: 10px 10px 0 10px;
+}
+
+.teacher-message {
+  text-align: right;
+  background-color: #d0e6ff;
+  border-radius: 10px 10px 0 10px;
+}
+
+.system-message {
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
 .middle-wrapper {
   /*background-color: rgb(240, 240, 240);*/
   font-family: "Hiragino Kaku Gothic ProN";
@@ -335,12 +373,3 @@ footer h7 {
 }
 
 /* メッセージのスタイル */
-.student-message {
-  text-align: left;
-  color: blue;
-}
-
-.teacher-message {
-  text-align: right;
-  color: green;
-}

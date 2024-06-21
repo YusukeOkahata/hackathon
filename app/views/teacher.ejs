@@ -112,9 +112,11 @@
         <div class="chat-messages" id="chat-messages">
           <% if (messages && messages.length > 0) { %> <%
           messages.forEach(function(message) { %>
-          <div class="message">
-            <span class="message-sender"><%= message.sender %>:</span>
-            <span class="message-text"><%= message.message %></span>
+          <div class="message-container <%= message.sender === username ? 'teacher':'student'%>"">
+            <div class="message">
+              <span class="message-sender"><%= message.sender %>:</span>
+              <span class="message-text"><%= message.message %></span>
+            </div>
           </div>
           <% }) %> <% } else { %>
           <div class="message">
