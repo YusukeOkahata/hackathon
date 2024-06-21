@@ -179,7 +179,7 @@
   socket.on("chat message", function (msg) {
     let item = document.createElement("li");
     item.textContent = msg.message;
-    item.className = msg.sender === "teacher" ? "right" : "left";
+    item.className = msg.sender === "teacher" ? "left" : "right";
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
   });

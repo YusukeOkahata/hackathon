@@ -42,10 +42,11 @@ router.get("/", (req, res) => {
 
       if (results.length > 0) {
         const userId = results[0].user_id;
+        const send2 ="Onoteacher";
 
         pool.query(
-          "SELECT * FROM messages WHERE user_id = ? ORDER BY created_at ASC",
-          [userId],
+          "SELECT * FROM messages WHERE send2 = ? ORDER BY created_at ASC",
+          [send2],
           (err, messages) => {
             //if (err) throw err;
             if (err) {
@@ -99,7 +100,9 @@ router.post("/send", (req, res) => {
   const password = req.session.password;
   const message = req.body.message;
   const status = "返信済";
-  const send2 = "Onotecher";
+  const send2 = "Onoteacher";
+
+  
   
 
   if (!username || !password) {

@@ -52,38 +52,11 @@ router.post("/", (req, res, next) => {
           req.session.user_id = user.user_id; // もしくは必要な情報をセッションに保存
 
           res.redirect("/students")
-          //res.render("students", {
-          //  error: null,
-          //  route: "/students",
-          //  username: username,
-          //});
         }
       }
 
       
-      //const user = results[0];
-      //// パスワードの文字列比較
-      //if (password !== user.password) {
-      //  res.render("index", { error: "Invalid password", route: null });
-      //}
       
-      /*パスワードハッシュ化の場合
-      const user = results[0];
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-
-      if (!isPasswordValid) {
-        return res.status(400).send("Invalid password");
-      }
-      */
-      // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
-      //req.session.username = username;
-/*
-      res.render("students", {
-        error: null,
-        route: "/students",
-        username: username,
-      });
-      */
     });
   }
 });
