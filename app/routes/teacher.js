@@ -98,6 +98,9 @@ router.post("/send", (req, res) => {
   const username = req.session.username;
   const password = req.session.password;
   const message = req.body.message;
+  const status = "返信済";
+  const send2 = "Onotecher";
+  
 
   if (!username || !password) {
     return res.redirect("/");
@@ -113,8 +116,8 @@ router.post("/send", (req, res) => {
         const userId = results[0].user_id;
 
         pool.query(
-          "INSERT INTO messages (user_id, message, sender) VALUES (?, ?, ?)",
-          [userId, message, username],
+          "INSERT INTO messages (user_id, message, status, sender, send2) VALUES (?, ?, ?, ?, ?)",
+          [userId, message,  status, username, send2],
           (err) => {
             if (err) throw err;
 

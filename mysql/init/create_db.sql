@@ -20,6 +20,7 @@ CREATE TABLE `messages` (
   `message` TEXT NOT NULL,
   `status` TEXT NOT NULL,
   `sender` VARCHAR(255) NOT NULL,
+  `send2` VARCHAR(255) NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`message_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
@@ -36,7 +37,7 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`question_id`),
   FOREIGN KEY (`question_by`) REFERENCES users(`user_id`)
 );
-*/
+
 
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
@@ -54,3 +55,4 @@ CREATE TABLE `tags_questions` (
   FOREIGN KEY (`tag_id`) REFERENCES tags(`tag_id`),
   FOREIGN KEY (`question_id`) REFERENCES questions(`question_id`)
 );
+*/
