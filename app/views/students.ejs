@@ -41,12 +41,24 @@
     </header>
 
 <div class="top-wrapper">
+  <div class="chat-messages" id="chat-messages">
+    <% if (messages && messages.length > 0) { %>
+      <% messages.forEach(function(message) { %>
+        <div class="message">
+          <span class="message-sender"><%= message.sender %>:</span>
+          <span class="message-text"><%= message.message %></span>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
   <ul id="messages"></ul>
-  <form id="form" action="/students/message" method="post">
+  <form id="form" action="/students/send" method="POST">
     <input id="input" name="message" autocomplete="off" /><button>送信</button>
   </form>
 </div>
+
 <div class="middle-wrapper"></div>
+
 <div class="bottom-wrapper"></div>
 
 <footer>
@@ -79,6 +91,13 @@
     item.className = msg.sender === "student" ? "right" : "left";
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const chatMessages = document.getElementById("chat-messages");
+
+    // Scroll to the bottom of the chat messages div
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   });
 </script>
   </body>

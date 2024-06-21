@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS `chatapp`;
-CREATE DATABASE `chatapp`;
+CREATE DATABASE `chatapp` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `chatapp`;
 
 DROP TABLE IF EXISTS `users`;
@@ -10,7 +10,7 @@ CREATE TABLE `users` (
   `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 DROP TABLE IF EXISTS `messages`;
@@ -22,7 +22,7 @@ CREATE TABLE `messages` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`message_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
 DROP TABLE IF EXISTS `questions`;

@@ -32,7 +32,7 @@ console.log(results :, JSON.stringify(results));
 res.render("students", { username: username });
 });
 */
-
+/*
 // GET students page
 router.get("/", (req, res, next) => {
 //
@@ -53,7 +53,50 @@ router.get("/", (req, res, next) => {
     }
   });
 });
+*/
 
+router.get("/", (req, res) => {
+  const username = req.session.username;
+  const password = req.session.password;
+
+  if (!username || !password) {
+    return res.redirect("/");
+  }
+
+  pool.query(
+    "SELECT user_id FROM users WHERE username = ? AND password = ?",
+    [username, password],
+    (err, results) => {
+      //if (err) throw err;
+      if (err) {
+        console.error("Database query error:", err);
+        return res.status(500).send("Database query error");
+      }
+
+      if (results.length > 0) {
+        const userId = results[0].user_id;
+
+        pool.query(
+          "SELECT * FROM messages WHERE user_id = ? ORDER BY created_at ASC",
+          [userId],
+          (err, messages) => {
+            //if (err) throw err;
+            if (err) {
+              console.error("Database query error:", err);
+              return res.status(500).send("Database query error");
+            }
+
+            res.render("students", { username: username, messages: messages });
+          }
+        );
+      } else {
+        res.redirect("/");
+      }
+    }
+  );
+});
+
+/*
 // POST a new message
 router.post("/message", (req, res, next) => {
 //
@@ -90,6 +133,7 @@ router.post("/message", (req, res, next) => {
   );
 });
   */
+ /*
  
   const getUserIdQuery = "SELECT user_id FROM users WHERE username = ?";
   
@@ -119,6 +163,50 @@ router.post("/message", (req, res, next) => {
     }
   });
 });
+});
+*/
+
+// メッセージ送信
+router.post("/send", (req, res) => {
+  const username = req.session.username;
+  const password = req.session.password;
+  const message = req.body.message;
+
+  if (!username || !password) {
+    return res.redirect("/");
+  }
+
+  pool.query(
+    "SELECT user_id FROM users WHERE username = ? AND password = ?",
+    [username, password],
+    (err, results) => {
+      //if (err) throw err;
+      if (err) {
+        console.error("Database query error:", err);
+        return res.status(500).send("Database query error");
+      }
+
+      if (results.length > 0) {
+        const userId = results[0].user_id;
+
+        pool.query(
+          "INSERT INTO messages (user_id, message, sender) VALUES (?, ?, ?)",
+          [userId, message, username],
+          (err) => {
+            //if (err) throw err;
+            if (err) {
+              console.error("Database insert error:", err);
+              return res.status(500).send("Database insert error");
+            }
+
+            res.redirect("/students");
+          }
+        );
+      } else {
+        res.redirect("/");
+      }
+    }
+  );
 });
 
 

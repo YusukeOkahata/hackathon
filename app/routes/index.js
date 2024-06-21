@@ -25,12 +25,15 @@ router.post("/", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   console.log(`username:${username}`);
-  console.log(`pass:${password}`);
+  console.log(`password:${password}`);
 
-  if (username == "Onoteacher" && password == "ice_number1") {
-    res.render("teacher", { username: username });
-    return;
-  } 
+  if (username === "Onoteacher" && password === "ice_number1") {
+    req.session.username = username;
+    req.session.password = password;
+    //res.render("teacher", { username: username });
+    res.redirect("/teacher");
+    //return;
+  } else {
     const sql = "SELECT * FROM users WHERE username = ?";
     pool.query(sql, [username], (err, results) => {
       if (err) {
@@ -45,6 +48,7 @@ router.post("/", (req, res, next) => {
         } else {
           // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
           req.session.username = username;
+          req.session.password = password;
           req.session.user_id = user.user_id; // もしくは必要な情報をセッションに保存
 
           res.redirect("/students")
@@ -81,7 +85,7 @@ router.post("/", (req, res, next) => {
       });
       */
     });
-  
+  }
 });
 
 module.exports = router;

@@ -33,7 +33,7 @@ app.use(session({
   secret: 'ice_number1', // ここを適切なシークレットキーに変更してください
   resave: false,
   //saveUninitialized: true,
-  saveUninitialized: false
+  saveUninitialized: true
   //cookie: { secure: false } // HTTPSを使う場合はtrueに変更
 }));
 //
