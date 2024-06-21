@@ -45,7 +45,7 @@ router.get("/", (req, res) => {
         const send2 = "Onoteacher";
 
         pool.query(
-          "SELECT * FROM messages WHERE send2 = ? ORDER BY created_at ASC",
+          "SELECT * FROM messages WHERE send2 = ? OR sender = 'Onoteacher' ORDER BY created_at ASC",
           [send2],
           (err, messages) => {
             //if (err) throw err;
