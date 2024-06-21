@@ -39,7 +39,7 @@
   <body>
     <i class="fas fa-bars nav-bar"></i>
 
-    <nav>
+    <nav class="hidden-nav">
       <div class="container">
         <br />
         <br />
@@ -56,7 +56,7 @@
         <li><a href="" target="_blank">機能D</a></li>
       </div>
     </nav>
-    <div class="space"></div>
+    <div class="space hidden-space"></div>
 
     <header>
       <div class="container">
@@ -70,27 +70,7 @@
         </a>
       </div>
     </header>
-    <!--
-    <div class="top-wrapper">
-      <div class="Message-form">
-        <div class="chat-messages" id="chat-messages">
-          <% if (messages && messages.length > 0) { %>
-            <% messages.forEach(function(message) { %>
-              <div class="message">
-                <span class="message-sender"><%= message.sender %>:</span>
-                <span class="message-text"><%= message.message %></span>
-              </div>
-            <% }) %>
-          <% } %>
-        </div>
-        <ul id="messages"></ul>
-        <form id="form" action="/teacher/send" method="POST">
-          <input id="input" name="message" autocomplete="off" placeholder="Enter Message" >
-          <button>送信</button>
-        </form>
-      </div>
-    </div>
-  -->
+   
     <div class="top-wrapper">
       <!--
       <div class="container">
@@ -116,6 +96,7 @@
             <div class="message">
               <span class="message-sender"><%= message.sender %>:</span>
               <span class="message-text"><%= message.message %></span>
+              <span class="message-send2">to:<%= message.send2 %></span>
             </div>
           </div>
           <% }) %> <% } else { %>

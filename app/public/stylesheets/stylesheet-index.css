@@ -106,7 +106,7 @@ nav li {
   cursor: pointer;
   position: fixed;
   z-index: 10;
-  color: white;
+  color: #928484;
 }
 
 .hidden-space {
@@ -132,7 +132,7 @@ nav li {
 }
 
 .nav-bar-white {
-  color: #928484;
+  color: white;
 }
 
 .Message-form {
@@ -220,14 +220,11 @@ nav li {
   justify-content: flex-start;
 }
 
+.message-send2 {
+  color: #953ecf;
+}
+
 .message {
-  /*
-  max-width: 60%;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #efefef;
-  color: #000;
-  */
   display: inline-block;
   background-color: #e1ffc7; /* メッセージの背景色 */
   border: 1px solid #a3d7a5; /* メッセージの枠線 */
