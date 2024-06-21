@@ -113,6 +113,12 @@ router.post("/send", (req, res) => {
           [userId, message, status, username, send2],
           (err) => {
             if (err) throw err;
+            const query = "UPDATE messages SET status = ? WHERE sender = ?";
+            const readStatus="返信済";
+            pool.query(query,[readStatus,send2],(err,results)=>{
+              if (err) throw err;
+              console.log("status changed!");
+            });
 
             res.redirect("/teacher");
           }
