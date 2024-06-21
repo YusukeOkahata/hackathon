@@ -16,7 +16,10 @@
 
     <!--script-->
     <script type="text/javascript" src="/javascript/loading.js"></script>
-    <script src="https://kit.fontawesome.com/9854922e4c.js" crossorigin="anonymous" ></script>
+    <script
+      src="https://kit.fontawesome.com/9854922e4c.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title><%= username %></title>
     <script src="/socket.io/socket.io.js"></script>
@@ -33,7 +36,6 @@
     </div>
   </div>
 
-  
   <body>
     <i class="fas fa-bars nav-bar"></i>
 
@@ -59,11 +61,16 @@
     <header>
       <div class="container">
         <a href="/">
-          <img class="header-logo" width="150" height="70" src="/image/ISDL_logo.png">
+          <img
+            class="header-logo"
+            width="150"
+            height="70"
+            src="/image/ISDL_logo.png"
+          />
         </a>
       </div>
     </header>
-<!--
+    <!--
     <div class="top-wrapper">
       <div class="Message-form">
         <div class="chat-messages" id="chat-messages">
@@ -84,33 +91,37 @@
       </div>
     </div>
   -->
-  <div class="top-wrapper">
-    <div class="Message-form">
-      <div class="chat-messages" id="chat-messages">
-        <% if (messages && messages.length > 0) { %>
-          <% messages.forEach(function(message) { %>
-            <div class="message">
-              <span class="message-sender"><%= message.sender %>:</span>
-              <span class="message-text"><%= message.message %></span>
-            </div>
-          <% }) %>
-        <% } else { %>
+    <div class="top-wrapper">
+      <div class="Message-form">
+        <div class="chat-messages" id="chat-messages">
+          <% if (messages && messages.length > 0) { %> <%
+          messages.forEach(function(message) { %>
+          <div class="message">
+            <span class="message-sender"><%= message.sender %>:</span>
+            <span class="message-text"><%= message.message %></span>
+          </div>
+          <% }) %> <% } else { %>
           <div class="message">
             <span class="message-sender">システム：</span>
             <span class="message-text">メッセージがありません。</span>
           </div>
-        <% } %>
+          <% } %>
+        </div>
+        <ul id="messages"></ul>
+        <form id="form" action="/teacher/send" method="POST">
+          <input
+            id="input"
+            name="message"
+            autocomplete="off"
+            placeholder="Enter Message"
+          />
+          <button>送信</button>
+        </form>
       </div>
-      <ul id="messages"></ul>
-      <form id="form" action="/teacher/send" method="POST">
-        <input id="input" name="message" autocomplete="off" placeholder="Enter Message" >
-        <button>送信</button>
-      </form>
     </div>
-  </div>
 
     <div class="middle-wrapper"></div>
-    
+
     <div class="bottom-wrapper"></div>
 
     <footer>
@@ -159,7 +170,6 @@
       });
     </script>
 
-    
     <script>
       let socket = io();
 
@@ -169,27 +179,30 @@
       //console.log(form);
 
       form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (input.value) {
-      socket.emit("chat message", { message: input.value, sender: '<%= username %>' });
-      input.value = "";
-    }
-  });
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", {
+            message: input.value,
+            sender: "<%= username %>",
+          });
+          input.value = "";
+        }
+      });
 
-  socket.on("chat message", function (msg) {
-    let item = document.createElement("li");
-    item.textContent = msg.message;
-    item.className = msg.sender === "teacher" ? "left" : "right";
-    messages.appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
-  });
+      socket.on("chat message", function (msg) {
+        let item = document.createElement("li");
+        item.textContent = msg.message;
+        item.className = msg.sender === "teacher" ? "left" : "right";
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
 
-  document.addEventListener("DOMContentLoaded", function() {
-  const chatMessages = document.getElementById("chat-messages");
+      document.addEventListener("DOMContentLoaded", function () {
+        const chatMessages = document.getElementById("chat-messages");
 
-  // Scroll to the bottom of the chat messages div
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-});
+        // Scroll to the bottom of the chat messages div
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      });
     </script>
   </body>
 </html>

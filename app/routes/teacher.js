@@ -42,7 +42,7 @@ router.get("/", (req, res) => {
 
       if (results.length > 0) {
         const userId = results[0].user_id;
-        const send2 ="Onoteacher";
+        const send2 = "Onoteacher";
 
         pool.query(
           "SELECT * FROM messages WHERE send2 = ? ORDER BY created_at ASC",
@@ -50,13 +50,30 @@ router.get("/", (req, res) => {
           (err, messages) => {
             //if (err) throw err;
             if (err) {
-              console.error(`GET /teacher: Error querying messages: ${err.message}`);
+              console.error(
+                `GET /teacher: Error querying messages: ${err.message}`
+              );
               return res.status(500).send("Database error");
             }
+            const sql = "SELECT username FROM users WHERE username <> ?;";
 
-            console.log('GET /teacher: Messages fetched:', messages);
+            pool.query(sql, ["Onoteacher"], (err, userList) => {
+              if (err) {
+                console.error(
+                  `GET /teacher: Error querying messages: ${err.message}`
+                );
+                return res.status(500).send("Database error");
+              }
 
-            res.render("teacher", { username: username, messages: messages });
+              console.log(userList);
+              res.render("teacher", {
+                username: username,
+                messages: messages,
+                /*userList: userList,*/
+              });
+            });
+
+            //console.log("GET /teacher: Messages fetched:", messages);
           }
         );
       } else {
@@ -66,7 +83,6 @@ router.get("/", (req, res) => {
     }
   );
 });
-
 
 /* POST a new message */
 /*
@@ -102,9 +118,6 @@ router.post("/send", (req, res) => {
   const status = "返信済";
   const send2 = "Onoteacher";
 
-  
-  
-
   if (!username || !password) {
     return res.redirect("/");
   }
@@ -120,7 +133,7 @@ router.post("/send", (req, res) => {
 
         pool.query(
           "INSERT INTO messages (user_id, message, status, sender, send2) VALUES (?, ?, ?, ?, ?)",
-          [userId, message,  status, username, send2],
+          [userId, message, status, username, send2],
           (err) => {
             if (err) throw err;
 
@@ -133,6 +146,5 @@ router.post("/send", (req, res) => {
     }
   );
 });
-
 
 module.exports = router;
