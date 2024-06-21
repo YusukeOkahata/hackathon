@@ -71,6 +71,7 @@
 
 <script>
   let socket = io();
+  //const socket = io();
 
   const form = document.getElementById("form");
   const input = document.getElementById("input");
@@ -87,7 +88,9 @@
 
   socket.on("chat message", function (msg) {
     let item = document.createElement("li");
+    //const item = document.createElement("div");
     item.textContent = msg.message;
+    //item.textContent = msg.sender + ": " + msg.message;
     item.className = msg.sender === "student" ? "right" : "left";
     messages.appendChild(item);
     window.scrollTo(0, document.body.scrollHeight);

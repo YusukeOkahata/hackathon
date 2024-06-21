@@ -133,7 +133,7 @@ router.post("/message", (req, res, next) => {
   );
 });
   */
-/*
+ /*
  
   const getUserIdQuery = "SELECT user_id FROM users WHERE username = ?";
   
@@ -210,5 +210,6 @@ router.post("/send", (req, res) => {
     }
   );
 });
+
 
 module.exports = router;
