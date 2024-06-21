@@ -154,6 +154,10 @@ nav li {
   max-height: 100%;
 }
 
+.chatList a {
+  color: #0f0f0f;
+}
+
 .top-image {
   width: 100%;
   height: 100%;

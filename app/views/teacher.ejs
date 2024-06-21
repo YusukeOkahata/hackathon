@@ -92,6 +92,20 @@
     </div>
   -->
     <div class="top-wrapper">
+      <div class="container">
+        <h2>Message List</h2>
+        <hr width="60%" />
+        <ul>
+          <% userList.forEach(user => { %>
+          <div class="chatList">
+            <a href=""><li><%= user.username %></li></a>
+          </div>
+          <hr width="50%" />
+          <br />
+          <% }); %>
+        </ul>
+      </div>
+
       <div class="Message-form">
         <div class="chat-messages" id="chat-messages">
           <% if (messages && messages.length > 0) { %> <%

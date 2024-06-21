@@ -69,7 +69,7 @@ router.get("/", (req, res) => {
               res.render("teacher", {
                 username: username,
                 messages: messages,
-                /*userList: userList,*/
+                userList: userList,
               });
             });
 
