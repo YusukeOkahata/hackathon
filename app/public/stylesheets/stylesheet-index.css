@@ -221,11 +221,22 @@ nav li {
 }
 
 .message {
+  /*
   max-width: 60%;
   padding: 10px;
   border-radius: 10px;
   background-color: #efefef;
   color: #000;
+  */
+  display: inline-block;
+  background-color: #e1ffc7; /* メッセージの背景色 */
+  border: 1px solid #a3d7a5; /* メッセージの枠線 */
+  border-radius: 15px; /* 角を丸くする */
+  padding: 10px 15px; /* 内側の余白 */
+  margin: 5px 0; /* 外側の余白 */
+  font-family: Arial, sans-serif; /* フォントの設定 */
+  font-size: 14px; /* フォントサイズ */
+  color: #333; /* 文字色 */
 }
 
 .student-message {
