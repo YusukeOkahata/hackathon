@@ -163,6 +163,9 @@ nav li {
   height: 100%;
 }
 
+
+
+
 #form {
   background: #181818dc;
   padding: 0.25rem;
@@ -206,6 +209,41 @@ nav li {
 #messages > li:nth-child(odd) {
   background: #efefef;
 }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+  gap: 20px; /* フォーム全体の間隔を開ける */
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 各入力フィールドとボタンの間隔 */
+}
+.name, .pass-container {
+  flex: 1;
+}
+.pass-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.pass {
+  flex: 1;
+  padding-right: 30px; /* 目のアイコンのための余白 */
+}
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+.sendButton {
+  padding: 10px 20px; /* ボタンのパディングを調整 */
+  flex-shrink: 0; /* ボタンのサイズが縮まないようにする */
+}
+
 
 .message-container {
   display: flex;
