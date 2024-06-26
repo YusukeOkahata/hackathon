@@ -9,7 +9,10 @@
       rel="icon"
       href="https://lh5.googleusercontent.com/qq75b9ARyuscR-o9P36tLOD5fBE4SHH_QKCH0ybfNuOh6y6SkR9SPJ4PsOz1qj2XsaVuZQYmyykhqEe-fB7yt5v4h3wIcU8"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
     <!--css-->
     <link rel="stylesheet" href="/stylesheets/stylesheet-index.css" />
@@ -36,7 +39,12 @@
     <header>
       <div class="container">
         <a href="/">
-          <img class="header-logo" width="150" height="70" src="/image/ISDL_logo.png">
+          <img
+            class="header-logo"
+            width="150"
+            height="70"
+            src="/image/ISDL_logo.png"
+          />
         </a>
       </div>
     </header>
@@ -46,13 +54,23 @@
         <h2>ログインフォーム</h2>
         <form class="login" action="/" method="POST">
           <div class="input-container">
-            <input class="name" type="text" name="username" placeholder="Enter username" />
+            <input
+              class="name"
+              type="text"
+              name="username"
+              placeholder="Enter username"
+            />
             <div class="pass-container">
-              <input class="pass" type="password" name="password" placeholder="Enter PASS" />
+              <input
+                class="pass"
+                type="password"
+                name="password"
+                placeholder="Enter PASS"
+              />
               <i class="fas fa-eye toggle-password"></i>
             </div>
           </div>
-          
+
           <!--<input class="pass" type="password" name="password" placeholder="Enter PASS" />
           <label>
             <input type="checkbox" id="showPassword"> パスワードを表示
@@ -63,7 +81,9 @@
         <p style="color: red"><%= error %></p>
 
         <div class="trans_registration">
-          <a class="trans_registration" href="registration">登録済みでない方はこちら</a>
+          <a class="trans_registration" href="registration"
+            >登録済みでない方はこちら</a
+          >
         </div>
       </div>
     </div>
@@ -89,13 +109,15 @@
 
     <!--パスワードの可視化切り替え-->
     <script>
-      document.querySelector('.toggle-password').addEventListener('click', function() {
-          var passwordField = document.querySelector('.pass');
-          var type = passwordField.type === 'password' ? 'text' : 'password';
+      document
+        .querySelector(".toggle-password")
+        .addEventListener("click", function () {
+          var passwordField = document.querySelector(".pass");
+          var type = passwordField.type === "password" ? "text" : "password";
           passwordField.type = type;
-          this.classList.toggle('fa-eye');
-          this.classList.toggle('fa-eye-slash');
-      });
+          this.classList.toggle("fa-eye");
+          this.classList.toggle("fa-eye-slash");
+        });
     </script>
 
     <!--
@@ -125,4 +147,3 @@
     -->
   </body>
 </html>
-

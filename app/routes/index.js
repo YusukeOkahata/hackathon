@@ -51,12 +51,9 @@ router.post("/", (req, res, next) => {
           req.session.password = password;
           req.session.user_id = user.user_id; // もしくは必要な情報をセッションに保存
 
-          res.redirect("/students")
+          res.redirect("/students");
         }
       }
-
-      
-      
     });
   }
 });

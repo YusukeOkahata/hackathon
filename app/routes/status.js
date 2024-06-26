@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
   let repliedCount = 0;
   let unrepliedCount = 0;
   let unrepliedUsers = new Set();
-  pool.query(query, ["Onoteacher"],(err, results) => {
+  pool.query(query, ["Onoteacher"], (err, results) => {
     if (err) {
       console.error("Error fetching data: " + err.stack);
       return;

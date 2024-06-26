@@ -60,50 +60,40 @@
 
     <header>
       <div class="container">
-        <a href="/">
-          <img
-            class="header-logo"
-            width="150"
-            height="70"
-            src="/image/ISDL_logo.png"
-          />
-        </a>
+        <div class="header-logo">
+          <a href="/">
+            <img
+              class="header-logo"
+              width="150"
+              height="70"
+              src="/image/ISDL_logo.png"
+            />
+          </a>
+        </div>
       </div>
+      
     </header>
-   
+
     <div class="top-wrapper">
-      <!--
-      <div class="container">
-        <h2>Message List</h2>
-        <hr width="60%" />
-        <ul>
-          <% userList.forEach(user => { %>
-          <div class="chatList">
-            <a href=""><li><%= user.username %></li></a>
-          </div>
-          <hr width="50%" />
-          <br />
-          <% }); %>
-        </ul>
-      </div>
-      -->
+    
 
       <div class="Message-form">
         <div class="chat-messages" id="chat-messages">
-          <% if (messages && messages.length > 0) { %> <%
-          messages.forEach(function(message) { %>
-          <div class="message-container <%= message.sender === username ? 'teacher':'student'%>"">
+          <% if (messages && messages.length > 0) { %> 
+            <%messages.forEach(function(message) { %>
+              <div class="message-container <%= message.sender === username ? 'teacher':'student'%>"">
+                <div class="message">
+                  <span class="message-sender"><%= message.sender %>:</span>
+                  <span class="message-text"><%= message.message %></span>
+                  <span class="message-send2">to:<%= message.send2 %></span>
+                </div>
+              </div>
+            <% }) %> 
+          <% } else { %>
             <div class="message">
-              <span class="message-sender"><%= message.sender %>:</span>
-              <span class="message-text"><%= message.message %></span>
-              <span class="message-send2">to:<%= message.send2 %></span>
+              <span class="message-sender">システム：</span>
+              <span class="message-text">メッセージがありません。</span>
             </div>
-          </div>
-          <% }) %> <% } else { %>
-          <div class="message">
-            <span class="message-sender">システム：</span>
-            <span class="message-text">メッセージがありません。</span>
-          </div>
           <% } %>
         </div>
 
@@ -123,6 +113,8 @@
           </select>
         </form>
       </div>
+      
+      
     </div>
 
     <div class="middle-wrapper"></div>
@@ -136,6 +128,12 @@
         >
       </div>
     </footer>
+
+    <script>
+      function navigate() {
+        window.location.href = "/";
+      }
+    </script>
 
     <!--サイドバー-->
     <script
