@@ -22,6 +22,7 @@
     ></script>
 
     <title><%= username %></title>
+    <script src="/socket.io/socket.io.js"></script>
   </head>
 
   <!--loading-->
@@ -35,11 +36,10 @@
     </div>
   </div>
 
-  
   <body>
     <i class="fas fa-bars nav-bar"></i>
 
-    <nav>
+    <nav class="hidden-nav">
       <div class="container">
         <br />
         <br />
@@ -56,51 +56,69 @@
         <li><a href="" target="_blank">機能D</a></li>
       </div>
     </nav>
-    <div class="space"></div>
+    <div class="space hidden-space"></div>
 
     <header>
-      <div class="header-logo">
-        <a href="/">
-          <img
-            class="header-logo"
-            width="150"
-            height="70"
-            src="/image/ISDL_logo.png"
-          />
-        </a>
-        <button class="header__button" onclick="navigate()">LOGOUT</button>
+      <div class="container">
+        <div class="header-logo">
+          <a href="/">
+            <img
+              class="header-logo"
+              width="150"
+              height="70"
+              src="/image/ISDL_logo.png"
+            />
+          </a>
+        </div>
+      </div>
+      
     </header>
 
     <div class="top-wrapper">
-      <div class="container">
-        <h2>Message List</h2>
-        <hr width="60%" />
-        <ul>
-          <% usersList.forEach(usersList => { %>
-            <div class="chatList">
-              <a href=""><li><%= usersList.username %></li></a>
-            </div>
-            <hr width="50%" />
-            <br>
-          <% }); %>
-        </ul>
-      </div>
-      
-      <!--
+    
+
       <div class="Message-form">
+        <div class="chat-messages" id="chat-messages">
+          <% if (messages && messages.length > 0) { %> 
+            <%messages.forEach(function(message) { %>
+              <div class="message-container <%= message.sender === username ? 'teacher':'student'%>"">
+                <div class="message">
+                  <span class="message-sender"><%= message.sender %>:</span>
+                  <span class="message-text"><%= message.message %></span>
+                  <span class="message-send2">to:<%= message.send2 %></span>
+                </div>
+              </div>
+            <% }) %> 
+          <% } else { %>
+            <div class="message">
+              <span class="message-sender">システム：</span>
+              <span class="message-text">メッセージがありません。</span>
+            </div>
+          <% } %>
+        </div>
+
         <ul id="messages"></ul>
-        <form id="form" action="">
+        <form id="form" action="/teacher/send" method="POST">
           <input
             id="input"
+            name="message"
             autocomplete="off"
             placeholder="Enter Message"
-          /><button>Send</button>
+          />
+          <button>送信</button>
+          <select name="selectedUser">
+            <% userList.forEach(user => { %>
+            <option value="<%= user.username %>"><%= user.username %></option>
+            <% }); %>
+          </select>
         </form>
       </div>
-      -->
+      
       
     </div>
+
     <div class="middle-wrapper"></div>
+
     <div class="bottom-wrapper"></div>
 
     <footer>
@@ -155,7 +173,6 @@
       });
     </script>
 
-    <script src="/socket.io/socket.io.js"></script>
     <script>
       let socket = io();
 
@@ -167,16 +184,27 @@
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (input.value) {
-          socket.emit("chat message", input.value);
+          socket.emit("chat message", {
+            message: input.value,
+            sender: "<%= username %>",
+          });
           input.value = "";
         }
       });
 
       socket.on("chat message", function (msg) {
         let item = document.createElement("li");
-        item.textContent = msg;
+        item.textContent = msg.message;
+        item.className = msg.sender === "teacher" ? "left" : "right";
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const chatMessages = document.getElementById("chat-messages");
+
+        // Scroll to the bottom of the chat messages div
+        chatMessages.scrollTop = chatMessages.scrollHeight;
       });
     </script>
   </body>

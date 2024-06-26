@@ -5,16 +5,12 @@ const pool = require("../mysqlConnection");
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
-  const query = `
-  SELECT q.status, u.username
-  FROM questions q
-  JOIN users u ON q.question_by = u.user_id
-`;
+  const query = `SELECT status, sender FROM messages WHERE sender <> ?`;
   // 初期化: '返信済' と '未返信' のカウント,および未返信の `question_by` のリスト
   let repliedCount = 0;
   let unrepliedCount = 0;
   let unrepliedUsers = new Set();
-  pool.query(query, (err, results) => {
+  pool.query(query, ["Onoteacher"], (err, results) => {
     if (err) {
       console.error("Error fetching data: " + err.stack);
       return;
@@ -23,13 +19,13 @@ router.get("/", (req, res, next) => {
     // 結果をループしてカウントする
     results.forEach((row) => {
       const status = row.status;
-      const username = row.username;
+      const sender = row.sender;
 
       if (status === "返信済") {
         repliedCount++;
       } else if (status === "未返信") {
         unrepliedCount++;
-        unrepliedUsers.add(username);
+        unrepliedUsers.add(sender);
       }
     });
 

@@ -6,6 +6,7 @@ const pool = mysql.createPool({
   password: "ice_number1",
   port: 3306,
   database: "chatapp",
+  charset: "utf8mb4" // 文字セットを指定する
 });
 
 //接続確認

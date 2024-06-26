@@ -38,7 +38,7 @@
   <body>
     <i class="fas fa-bars nav-bar"></i>
 
-    <nav>
+    <nav class="hidden-nav">
       <div class="container">
         <br />
         <br />
@@ -55,28 +55,30 @@
         <li><a href="" target="_blank">機能D</a></li>
       </div>
     </nav>
-    <div class="space"></div>
+    <div class="space hidden-space"></div>
 
     <!--ここからサイドバーのところ-->
     <div class="header">
-      <div class="header-logo">
-        <a href="/">
-          <img
-            class="header-logo"
-            width="150"
-            height="70"
-            src="/image/ISDL_logo.png"
-          />
-        </a>
-        <button class="header__button" onclick="navigate()">LOGOUT</button>
+      <div class="container">
+        <div class="header-logo">
+          <a href="/">
+            <img
+              class="header-logo"
+              width="150"
+              height="70"
+              src="/image/ISDL_logo.png"
+            />
+          </a>
+          <!--<button class="header__button" onclick="navigate()">LOGOUT</button>-->
+        </div>
       </div>
+  
     </div>
 
     <div class="top-wrapper">
       <h2>返信状況確認ページ</h2>
       <h3>
-        未返信：<%= unrepliedCount %>件 未返信のID：<%=
-        unrepliedUsers.join(',')%>
+        未返信：<%= unrepliedCount %>件 未返信のID： <%= unrepliedUsers.join(', ')%>
       </h3>
       <h3>返信済：<%= repliedCount %>件</h3>
     </div>

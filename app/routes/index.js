@@ -7,73 +7,53 @@ router.get("/", (req, res, next) => {
   pool.query("SELECT * from users;", (err, results, fields) => {
     if (err) {
       console.error("index.js: sql execute error");
+      res.render("index", { error: "Error fetching users", route: null });
     } else {
       console.log("index.js: sql execute success");
       //resultを文字列(json)形式で表示
       //console.log(`results :`, JSON.stringify(results));
+      res.render("index", { error: null, route: null });
     }
     //pool.end();
     //res.send(results);
   });
 
-  res.render("index", { error: null, route: null });
+  //res.render("index", { error: null, route: null });
 });
 
 router.post("/", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   console.log(`username:${username}`);
-  console.log(`pass:${password}`);
+  console.log(`password:${password}`);
 
-  if (username == "Onoteacher" && password == "ice_number1") {
-    const sql = "SELECT username FROM users WHERE username <> ?"; // 'Onoteacher'以外のusernameを指定;
-
-    pool.query(sql, ["Onoteacher"], (err, results) => {
-      if (err) {
-        console.error("Error fetching data: " + err.stack);
-        return;
-      }
-
-      res.render("teacher", { username: username, usersList: results });
-    });
+  if (username === "Onoteacher" && password === "ice_number1") {
+    req.session.username = username;
+    req.session.password = password;
+    //res.render("teacher", { username: username });
+    res.redirect("/teacher");
+    //return;
   } else {
     const sql = "SELECT * FROM users WHERE username = ?";
-    pool.query(sql, [username], async (err, results) => {
+    pool.query(sql, [username], (err, results) => {
       if (err) {
         res.render("index", { error: "Error during login", route: null });
-      }
-      if (results.length === 0) {
+      } else if (results.length === 0) {
         res.render("index", { error: "User Not Found", route: null });
-      }
+      } else {
+        const user = results[0];
+        // パスワードの文字列比較
+        if (password !== user.password) {
+          res.render("index", { error: "Invalid password", route: null });
+        } else {
+          // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
+          req.session.username = username;
+          req.session.password = password;
+          req.session.user_id = user.user_id; // もしくは必要な情報をセッションに保存
 
-      const user = results[0];
-      // パスワードの文字列比較
-      if (password !== user.password) {
-        res.render("index", { error: "Invalid password", route: null });
+          res.redirect("/students");
+        }
       }
-      /*パスワードハッシュ化の場合
-      const user = results[0];
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-
-      if (!isPasswordValid) {
-        return res.status(400).send("Invalid password");
-      }
-      */
-      // ユーザーが正しく認証された場合、セッションにユーザー情報を保存する
-      //req.session.username = username;
-
-      //students.ejsに遷移したあとの処理
-      const sql = `SELECT q.content, u.username FROM questions q JOIN users u ON q.question_by = u.user_id WHERE u.username = ?`;
-      pool.query(sql, [username], (err, results) => {
-        if (err) throw err;
-        console.log(results);
-        res.render("students", {
-          error: null,
-          route: "/students",
-          username: username,
-          questions: results,
-        });
-      });
     });
   }
 });

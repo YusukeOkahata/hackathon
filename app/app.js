@@ -3,7 +3,11 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
+//
+const http = require('http');
+const socketIo = require('socket.io');
+const session = require("express-session");
+//
 var indexRouter = require("./routes/index");
 var registrationRouter = require("./routes/registration");
 var statusRouter = require("./routes/status");
@@ -11,6 +15,9 @@ var studentsRouter = require("./routes/students");
 var teacherRouter = require("./routes/teacher");
 
 var app = express();
+//
+const server = http.createServer(app);
+const io = socketIo(server);
 //
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,7 +28,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
+//
+app.use(session({
+  secret: 'ice_number1', // ここを適切なシークレットキーに変更してください
+  resave: false,
+  //saveUninitialized: true,
+  saveUninitialized: true
+  //cookie: { secure: false } // HTTPSを使う場合はtrueに変更
+}));
+//
 app.use("/", indexRouter);
 app.use("/registration", registrationRouter);
 app.use("/status", statusRouter);
@@ -43,5 +58,16 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+//
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
 
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+});
+//
 module.exports = app;
